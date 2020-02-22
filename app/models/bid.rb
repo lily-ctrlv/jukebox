@@ -1,6 +1,6 @@
 class Bid < ApplicationRecord
   belongs_to :user
-  belongs_to :playlist_song
+  belongs_to :event_track
 
-  validates :amount, presence: true
+  validates :amount, presence: true, numericality: true
 end
