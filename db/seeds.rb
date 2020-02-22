@@ -5,81 +5,112 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 puts 'Creating users...'
-james = User.create!(
+james = User.new(
   email: 'james@jukebox.org',
   password: '123456',
   display_name: 'jukebox_james',
   balance: 1000,
   dj: false)
-eric = User.create!(
+james.avatar.attach(io: open('https://avatars3.githubusercontent.com/u/39556334?s=460&v=4'), filename: "james_face.jpg", content_type: "image/jpg")
+james.save!
+eric = User.new(
   email: 'eric@jukebox.org',
   password: '123456',
   display_name: 'jukebox_eric',
   balance: 2000,
   dj: false)
-lili = User.create!(
+eric.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/25728050?s=460&v=4'), filename: "eric_face.jpg", content_type: "image/jpg")
+eric.save!
+lili = User.new(
   email: 'lili@jukebox.org',
   password: '123456',
   display_name: 'jukebox_lili',
   balance: 500,
   dj: false)
-jamie = User.create!(
+lili.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/39335511?s=460&v=4'), filename: "lili_face.jpg", content_type: "image/jpg")
+lili.save!
+jamie = User.new(
   email: 'jamie@jukebox.org',
   password: '123456',
   display_name: 'jukebox_jamie',
   balance: 800,
   dj: false)
-shirley = User.create!(
+jamie.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/33573418?s=460&v=4'), filename: "jamie_face.jpg", content_type: "image/jpg")
+jamie.save!
+shirley = User.new(
   email: 'shirley@jukebox.org',
   password: '123456',
   display_name: 'dj_shirley',
   balance: 0,
   dj: true)
+shirley.avatar.attach(io: open('https://www.grammy.com/sites/com/files/styles/image_landscape_hero/public/muzooka/Taylor%2BSwift/Taylor%2520Swift_16_9_1578384864.jpg?itok=EHqXQIe6'), filename: "tay_face.jpg", content_type: "image/jpg")
+shirley.save!
 puts 'Users created!'
 
 puts 'Creating tracks...'
-juice = Track.create!(
+juice = Track.new(
   title: 'Juice',
   artist: 'Lizzo',
   album: 'Cuz I Love You')
-shake_it_off = Track.create!(
+juice.cover_photo.attach(io: open('https://images-na.ssl-images-amazon.com/images/I/61h8J%2BY55qL._AC_SX466_.jpg'), filename: "juice_cover.jpg", content_type: "image/jpg")
+juice.save!
+shake_it_off = Track.new(
   title: 'Shake It Off',
   artist: 'Taylor Swift',
   album: '1989')
-i_like_me_better = Track.create!(
+shake_it_off.cover_photo.attach(io: open('https://lastfm.freetls.fastly.net/i/u/770x0/eca8390917b83c2c59f69484247d55af.jpg'), filename: "shake_cover.jpg", content_type: "image/jpg")
+shake_it_off.save!
+i_like_me_better = Track.new(
   title: 'I Like Me Better',
   artist: 'Lauv',
   album: 'I Met You When I Was 18.')
-someone_you_loved = Track.create!(
+i_like_me_better.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/Lauv_-_I_Met_You_When_I_Was_18.png/220px-Lauv_-_I_Met_You_When_I_Was_18.png'), filename: "lime_me_cover.jpg", content_type: "image/jpg")
+i_like_me_better.save!
+someone_you_loved = Track.new(
   title: 'Someone You Loved',
   artist: 'Peter Capaldi',
   album: 'Divinely Uninspired To A Hellish Extent')
-worship = Track.create!(
+someone_you_loved.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Lewis_Capaldi_-_Divinely_Uninspired_to_a_Hellish_Extent.png/220px-Lewis_Capaldi_-_Divinely_Uninspired_to_a_Hellish_Extent.png'), filename: "someone_cover.jpg", content_type: "image/jpg")
+someone_you_loved.save!
+worship = Track.new(
   title: 'Worship',
   artist: 'Years & Years',
   album: 'Communion')
-lost_in_japan = Track.create!(
+worship.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/7/7f/Years_%26_Years_-_Communion_%28cover%29.jpg'), filename: "worship_cover.jpg", content_type: "image/jpg")
+worship.save!
+lost_in_japan = Track.new(
   title: 'Lost In Japan',
   artist: 'Shawn Mendes',
   album: 'Shawn Mendes')
-no_goodbyes = Track.create!(
+lost_in_japan.cover_photo.attach(io: open('https://data.whicdn.com/images/313082862/original.jpg?t=1527534006'), filename: "lost_in_cover.jpg", content_type: "image/jpg")
+lost_in_japan.save!
+no_goodbyes = Track.new(
   title: 'No Goodbyes',
   artist: 'Dua Lipa',
   album: 'Dua Lipa (Deluxe)')
-the_wire = Track.create!(
+no_goodbyes.cover_photo.attach(io: open('https://images-na.ssl-images-amazon.com/images/I/91IE9WvAHyL._AC_SL1500_.jpg'), filename: "goodbyes_cover.jpg", content_type: "image/jpg")
+no_goodbyes.save!
+the_wire = Track.new(
   title: 'The Wire',
   artist: 'HAIM',
   album: 'Days Are Gone')
-islands = Track.create!(
+the_wire.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Haim_-_Days_Are_Gone.png/220px-Haim_-_Days_Are_Gone.png'), filename: "wire_cover.jpg", content_type: "image/jpg")
+the_wire.save!
+islands = Track.new(
   title: 'Islands',
   artist: 'The xx',
   album: 'xx')
-high_hopes = Track.create!(
+islands.cover_photo.attach(io: open('https://static.stereogum.com/blogs.dir/2/files/2011/10/X-608x608.jpg'), filename: "islands_cover.jpg", content_type: "image/jpg")
+islands.save!
+high_hopes = Track.new(
   title: 'High Hopes',
   artist: 'Kodaline',
   album: 'In A Perfect World (Deluxe)')
+high_hopes.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/4/42/Kodaline_-_In_A_Perfect_World.jpg'), filename: "high_hopes_cover.jpg", content_type: "image/jpg")
+high_hopes.save!
 puts 'Tracks created!'
 
 puts 'Creating venues...'
