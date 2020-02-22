@@ -9,7 +9,7 @@ class BidsController < ApplicationController
   end
 
   def new
-    @bid = Bid.new(bid_params)
+    @bid = Bid.new
   end
 
   def create
