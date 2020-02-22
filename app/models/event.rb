@@ -1,8 +1,9 @@
 class Event < ApplicationRecord
-  has_many :playlist
-  validates :location, presence: true
+  belongs_to :venue
+  belongs_to :user
+
+  validates :theme, presence: true
   validates :name, presence: true
-  validates :date, presence: true
-  validates :start_time, presence: true
-  validates end_time, presence: true
+  validates :start_date_time, presence: true
+  validates :end_date_time, presence: true
 end
