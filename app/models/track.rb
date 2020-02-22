@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-  has_many :event_tracks, optional: true
+  has_many :event_tracks
 
   validates :title, presence: true
   validates :artist, presence: true
