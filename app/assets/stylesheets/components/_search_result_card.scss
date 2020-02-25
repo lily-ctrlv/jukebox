@@ -1,0 +1,51 @@
+.search-result-card {
+
+  position:relative;
+
+height: 80px;
+width: 375px;
+}
+
+  .search-result-card > .song-img {
+    position: absolute;
+    left: 2.67%;
+    right: 81.33%;
+    top: 12.5%;
+    bottom: 12.5%;
+  }
+
+    .search-result-card > .song-tit {
+    position: absolute;
+    left: 21.33%;
+    right: 15.93%;
+    top: 18.75%;
+    bottom: 61.06%;
+
+    font-family: $headers-font;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 23px;
+
+    color: $white;
+
+  }
+
+
+  .search-result-card > .song-art {
+    position: absolute;
+    left: 21.33%;
+    right: 53.2%;
+    top: 55%;
+    bottom: 28.65%;
+
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: $light-grey;
+
+
+  }
