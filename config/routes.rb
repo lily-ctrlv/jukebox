@@ -8,7 +8,7 @@ end
 
 resources :bids, except: [ :show, :destroy, :new, :create]
 
-resources :users do
+resources :users, only: [ :show ] do
   resources :bids, only: [ :index, :show ]
   end
 end
