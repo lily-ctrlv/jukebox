@@ -1,0 +1,65 @@
+//the positioning and spacing classes have been commented out for now
+//uncomment when we are ready to make the views as and when necessary
+
+
+// login with spotify button
+
+.btn {
+  width: 320px!important;
+  height: 60px;
+
+  font-family: $headers-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  // display: flex;
+  // align-items: center;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.btn-green {
+  // position: absolute;
+  // left: 7.47%;
+  // right: 7.2%;
+  // top: 83.62%;
+  // bottom: 8.99%;
+
+  background: $green;
+}
+
+// all primary buttons
+
+.btn-pink {
+  // position: absolute;
+  // left: 7.47%;
+  // right: 7.2%;
+  // top: 83.62%;
+  // bottom: 8.99%;
+
+  background: $pink;
+}
+
+.btn-neutral {
+// position: static;
+// left: 2.94%;
+// right: 2.94%;
+// top: 12.5%;
+// bottom: 12.5%;
+
+border: 1px solid #D1D1D1;
+box-sizing: border-box;
+color: $white;
+// flex: none;
+// order: 0;
+// align-self: center;
+// margin: 0px 10px;
+}
+
+.btn-neutral:hover {
+  background-color: $grey;
+  color: $black;
+  border: 1px solid $grey;
+
+}

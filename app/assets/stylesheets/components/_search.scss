@@ -1,0 +1,35 @@
+.search-bar {
+    //outline & positioning
+    position: relative;
+    width: 375px;
+    height: 53px;
+    left: 0px;
+    top: 30px;
+    background: $grey;
+
+}
+
+.search-text {
+    //content
+    position: absolute;
+    width: 266px;
+    height: 23px;
+    left: 55px;
+    top: 15px;
+
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+
+    color: $white;
+    opacity: 0.75;
+}
+
+.search-text.active {
+      opacity: 1;
+}

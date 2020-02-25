@@ -19,8 +19,8 @@ class EventTracksController < ApplicationController
       redirect_to event_track_path(@event_track)
     else
       render :new
+    end
   end
-end
 
   def update
     @event_track = EventTrack.find(params[:id])
@@ -28,8 +28,8 @@ end
       redirect_to event_track_path(@event_track)
     else
       render :new
+    end
   end
-end
 
   def edit
     @event_track = EventTrack.find(params[:id])
@@ -38,6 +38,6 @@ end
   private
 
   def event_track_params
-    params.require(:event_track).permit( :user_id, :id, :song, :playlist, :total_bid_amount, :rank)
+    params.require(:event_track).permit(:user_id, :id, :song, :playlist, :total_bid_amount, :rank)
   end
 end
