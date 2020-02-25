@@ -5,7 +5,8 @@
 // login with spotify button
 
 .btn {
-  padding: 16px 96px;
+  min-width: 300px;
+  padding: 16px;
 
   font-family: $headers-font;
   font-style: normal;
@@ -26,6 +27,7 @@
   // bottom: 8.99%;
 
   background: $green;
+  margin-top: 10vh;
 }
 
 // all primary buttons
@@ -61,8 +63,4 @@ color: $white;
   color: $black;
   border: 1px solid $grey;
 
-}
-
-.button-spotify {
-  margin-top: 10vh;
 }
