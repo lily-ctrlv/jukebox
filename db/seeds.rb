@@ -127,21 +127,25 @@ start_date_time = Time.new(date_time.year, date_time.month, date_time.day, date_
 end_date_time = Time.new(date_time.year, date_time.month, date_time.day, date_time.hour + 3, 0, 0)
 
 puts 'Creating events...'
-fomo_friday = Event.create!(
+fomo_friday = Event.new(
   name: 'Fomo Friday',
   theme: 'Pop',
   venue_id: pryzm.id,
   user_id: shirley.id,
   start_date_time: start_date_time,
   end_date_time: end_date_time)
+fomo_friday.event_image.attach(io: open('https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'), filename: "fomo_friday_image.jpg", content_type: "image/jpg")
+fomo_friday.save!
 puts 'Events created!'
-just_juice = Event.create!(
+just_juice = Event.new(
   name: 'Just Juice',
   theme: 'Pop',
   venue_id: queen_of_hoxton.id,
   user_id: shirley.id,
   start_date_time: start_date_time,
   end_date_time: end_date_time)
+just_juice.event_image.attach(io: open('https://images.unsplash.com/photo-1565034400361-c05ee5e2cbb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'), filename: "just_juice_image.jpg", content_type: "image/jpg")
+just_juice.save!
 puts 'Events created!'
 
 puts 'Creating event tracks...'
@@ -208,4 +212,3 @@ shake_it_off_bids = Bid.where(event_track_id: shake_it_off_event_track.id)
 total_shake_it_off_bids = shake_it_off_bids.sum { |b| b.amount }
 shake_it_off_event_track.update!(total_bid_amount: total_shake_it_off_bids)
 puts 'Total bids tallied!'
-
