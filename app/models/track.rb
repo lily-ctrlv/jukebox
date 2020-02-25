@@ -5,5 +5,6 @@ class Track < ApplicationRecord
   validates :title, presence: true
   validates :artist, presence: true
   validates :album, presence: true
+
   validates :cover_photo, attached: true
 end
