@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :balance, numericality: true
   validates :dj, inclusion: { in: [true, false] }
   validates :avatar, attached: true
+  validates :first_name, :last_name, presence: true
 
   def public_id
     return "avatar/" + Cloudinary::Utils.random_public_id
