@@ -11,6 +11,8 @@ puts 'Creating users...'
 james = User.new(
   email: 'james@jukebox.org',
   password: '123456',
+  first_name: 'James',
+  last_name: 'Trinder',
   display_name: 'jukebox_james',
   balance: 1000,
   dj: false)
@@ -19,6 +21,8 @@ james.save!
 eric = User.new(
   email: 'eric@jukebox.org',
   password: '123456',
+  first_name: 'Eric',
+  last_name: 'Burger',
   display_name: 'jukebox_eric',
   balance: 2000,
   dj: false)
@@ -27,6 +31,8 @@ eric.save!
 lili = User.new(
   email: 'lili@jukebox.org',
   password: '123456',
+  first_name: 'Liliana',
+  last_name: 'Martins Cosentino',
   display_name: 'jukebox_lili',
   balance: 500,
   dj: false)
@@ -35,6 +41,8 @@ lili.save!
 jamie = User.new(
   email: 'jamie@jukebox.org',
   password: '123456',
+  first_name: 'Jamie',
+  last_name: 'Newton',
   display_name: 'jukebox_jamie',
   balance: 800,
   dj: false)
@@ -43,6 +51,8 @@ jamie.save!
 shirley = User.new(
   email: 'shirley@jukebox.org',
   password: '123456',
+  first_name: 'Shirley',
+  last_name: 'Whirley',
   display_name: 'dj_shirley',
   balance: 0,
   dj: true)

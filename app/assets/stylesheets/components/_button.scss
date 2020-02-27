@@ -5,8 +5,8 @@
 // login with spotify button
 
 .btn {
-  width: 320px!important;
-  height: 60px;
+  min-width: 300px;
+  padding: 16px;
 
   font-family: $headers-font;
   font-style: normal;
@@ -27,6 +27,7 @@
   // bottom: 8.99%;
 
   background: $green;
+  margin-top: 10vh;
 }
 
 // all primary buttons

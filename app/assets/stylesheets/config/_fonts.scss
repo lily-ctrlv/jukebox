@@ -6,24 +6,56 @@
 // $headers-font: "Circular", "Raleway", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
+// @font-face {
+//   font-family: "Circular";
+//   src: font-url('/assets/Circular/CircularPro-Black.otf');
+//   font-weight: 900;
+// }
+
+// @font-face {
+//   font-family: "Circular";
+//   src: font-url('/assets/Circular/CircularPro-Medium.otf');
+//   font-weight: 500;
+// }
+
+// @font-face {
+//   font-family: "Circular";
+//   src: font-url('/assets/Circular/CircularPro-Book.otf');
+//   font-weight: 400;
+// }
+
 @font-face {
-  font-family: "Circular";
-  src: font-url('/assets/Circular/CircularPro-Black.otf');
-  font-weight: 900;
+    font-family: 'Circular';
+    src: url('/assets/Circular/CircularPro-Medium.eot');
+    src: url('/assets/Circular/CircularPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('/assets/Circular/CircularPro-Medium.woff2') format('woff2'),
+        url('/assets/Circular/CircularPro-Medium.woff') format('woff'),
+        url('/assets/Circular/CircularPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "Circular";
-  src: font-url('/assets/Circular/CircularPro-Medium.otf');
-  font-weight: 500;
+    font-family: 'Circular';
+    src: url('/assets/Circular/CircularPro-Book.eot');
+    src: url('/assets/Circular/CircularPro-Book.eot?#iefix') format('embedded-opentype'),
+        url('/assets/Circular/CircularPro-Book.woff2') format('woff2'),
+        url('/assets/Circular/CircularPro-Book.woff') format('woff'),
+        url('/assets/Circular/CircularPro-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "Circular";
-  src: font-url('/assets/Circular/CircularPro-Book.otf');
-  font-weight: 400;
+    font-family: 'Circular';
+    src: url('/assets/Circular/CircularPro-Black.eot');
+    src: url('/assets/Circular/CircularPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('/assets/Circular/CircularPro-Black.woff2') format('woff2'),
+        url('/assets/Circular/CircularPro-Black.woff') format('woff'),
+        url('/assets/Circular/CircularPro-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
 }
-
 
 $my-font: "Circular";
 
