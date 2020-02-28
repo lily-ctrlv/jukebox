@@ -109,6 +109,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
+    noun-project-api (2.0.1)
+      oauth (~> 0.5)
+    oauth (0.5.4)
     orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.12.2)
@@ -223,6 +226,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.6.1)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
+  noun-project-api (~> 2.0.0)
   pg (~> 0.21)
   pry-byebug
   pry-rails

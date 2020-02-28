@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'active_storage_validations'
+gem 'noun-project-api', '~> 2.0.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
