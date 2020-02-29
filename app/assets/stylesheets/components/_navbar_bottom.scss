@@ -1,0 +1,40 @@
+.navbar-bottom {
+
+  background: $black;
+  color: white;
+  height: 54px;
+
+}
+
+.navbar .container {
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.link-item {
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav-icon {
+    height: auto;
+    margin-bottom: 5px;
+    width: 20px;
+}
+
+.bottom-nav-link {
+  font-family: $headers-font;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 13px;
+  color: white;
+}
+
+.bottom-nav-link:hover {
+  text-decoration: none;
+  color: white;
+}

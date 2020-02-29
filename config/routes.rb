@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   # resources :bids, except: [ :show, :destroy, :new, :create]
-
+  resources :tracks
 
   resources :users, only: [ :show ] do
     resources :bids, only: [ :index, :show ]
