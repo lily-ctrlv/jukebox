@@ -5,57 +5,33 @@
 // login with spotify button
 
 .btn {
-  min-width: 300px;
+  width: 90%;
   padding: 16px;
+  margin: 4px 0px 4px 0px;
 
   font-family: $headers-font;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 23px;
-  // display: flex;
-  // align-items: center;
   text-align: center;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .btn-green {
-  // position: absolute;
-  // left: 7.47%;
-  // right: 7.2%;
-  // top: 83.62%;
-  // bottom: 8.99%;
-
   background: $green;
-  margin-top: 10vh;
 }
-
 // all primary buttons
 
 .btn-pink {
-  // position: absolute;
-  // left: 7.47%;
-  // right: 7.2%;
-  // top: 83.62%;
-  // bottom: 8.99%;
-
   background: $pink;
 }
 
 .btn-neutral {
-// position: static;
-// left: 2.94%;
-// right: 2.94%;
-// top: 12.5%;
-// bottom: 12.5%;
-
-border: 1px solid #D1D1D1;
-box-sizing: border-box;
-color: $white;
-// flex: none;
-// order: 0;
-// align-self: center;
-// margin: 0px 10px;
+  border: 1px solid #D1D1D1;
+  box-sizing: border-box;
+  color: $white;
+  background: transparent;
 }
 
 .btn-neutral:hover {
