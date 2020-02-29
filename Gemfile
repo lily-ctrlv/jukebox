@@ -20,6 +20,9 @@ gem 'active_storage_validations'
 gem 'json'
 gem 'oauth', '~> 0.5.1'
 
+gem 'money-rails'
+gem 'stripe'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
