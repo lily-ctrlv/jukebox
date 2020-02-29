@@ -1,7 +1,3 @@
-<!-- the line below will add bottom padding only to pages which has the navbar bottom -->
-<!-- this logic is added on the controller of each of those acrtions -->
-<!-- body{:class @body_padding ? "body-padding" : "test"} -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,8 +9,21 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
 
+  <% if current_page?('/') || current_page?(:controller => 'events', :action => 'show') %>
+    <body>
+  <% elsif current_page?(:controller => 'tracks', :action => 'show') %>
+    <body class="padded-body black-background">
+    <%= render 'shared/navbar_bottom'%>
+  <% elsif current_page?(:controller => 'users', :action => 'show') %>
+    <body class="padded-body">
+    <%= render 'shared/navbar_bottom' %>
+    <%= render 'shared/navbar_top' %>
+  <% else%>
+    <body class="padded-body black-background">
+    <%= render 'shared/navbar_bottom' %>
+    <%= render 'shared/navbar_top' %>
+  <%end%>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
