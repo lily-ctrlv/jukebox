@@ -1,12 +1,14 @@
 .navbar-bottom {
-  justify-content: space-between;
+
   background: $black;
   color: white;
   height: 54px;
+
 }
 
 .navbar .container {
   flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
 .link-item {
@@ -20,16 +22,19 @@
 .nav-icon {
     height: auto;
     margin-bottom: 5px;
-    width: 10%;
+    width: 20px;
 }
 
 .bottom-nav-link {
-  font-family: $body-font;
+  font-family: $headers-font;
   font-style: normal;
   font-weight: normal;
   font-size: 8px;
   line-height: 13px;
   color: white;
-
 }
 
+.bottom-nav-link:hover {
+  text-decoration: none;
+  color: white;
+}
