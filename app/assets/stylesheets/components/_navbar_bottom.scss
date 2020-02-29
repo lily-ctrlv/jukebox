@@ -1,0 +1,35 @@
+.navbar-bottom {
+  justify-content: space-between;
+  background: $black;
+  color: white;
+  height: 54px;
+}
+
+.navbar .container {
+  flex-wrap: nowrap;
+}
+
+.link-item {
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav-icon {
+    height: auto;
+    margin-bottom: 5px;
+    width: 10%;
+}
+
+.bottom-nav-link {
+  font-family: $body-font;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 13px;
+  color: white;
+
+}
+

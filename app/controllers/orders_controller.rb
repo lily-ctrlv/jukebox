@@ -1,0 +1,2 @@
+class BalancePaymentsController < ApplicationController
+end
