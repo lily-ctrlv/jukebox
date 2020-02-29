@@ -10,28 +10,112 @@
       :crop=>"thumb"
     } ] %>
     <div class="account-name-infos">
-      <p id="full-name"><%= @user.first_name %> <%= @user.last_name %></p>
+      <p id="full-name">
+        <%= @user.first_name %> <%= @user.last_name %>
+        <% if @user.dj %>
+          <span class="badge badge-secondary pl-2 pr-2">DJ</span>
+        <% end %>
+      </p>
       <p id="display-name">Spotify: <%= @user.display_name %></p>
     </div>
     <div class="account-balance">
-      <p id="balance-amount">£<%= @user.balance %></p>
+      <p id="balance-amount">£<span id="balance-figure"><%= @user.balance %><span></p>
       <p id="balance-tag">Balance</p>
     </div>
-    <div class="btn btn-pink">
-      Add Money
-    </div>
-  </div>
-  <div class="recent-bids">
-    <p>Your Recent Bids</p>
-    <% @recent_10_bids.each do |bid| %>
-      <div class="row">
-        <div class="song-card">
-          <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
-          <span class="song-title"><%= Track.find(bid.event_track.track_id).title %></span>
-          <span class="song-artist"><%= Track.find(bid.event_track.track_id).artist %></span>
-          <span class="song-bid">£<%= bid.amount %></span>
-        </div>
+    <% if @user.dj %>
+      <div class="btn btn-neutral">
+        PAY OUT MY BALANCE
+      </div>
+      <div class="btn btn-pink">
+        MY PLAYLISTS
+      </div>
+      <div class="btn btn-green">
+        CREATE NEW PLAYLIST
+      </div>
+    <% else %>
+      <div id="add-money">
+        <button class="btn btn-pink" id="add-money-btn">ADD MONEY</button>
       </div>
     <% end %>
+      <div class="add-money-form hidden">
+        <%= simple_form_for current_user, remote: true, url: {action: :update, controller: 'registrations'}, :method => :patch do |f| %>
+          <%= f.input :balance_cents, as: :hidden %>
+          <div class="balance-incrementer mb-3">
+            <a class="btn-incrementer round-bordered" id="minus" data-offset="-50">-</a>
+          <div class="flex-grow-1">
+          <%= f.button :submit, "ADD £0.50", class:"btn btn-green", id:"submit", data: {:"count" => 50 } %>
+          </div>
+            <a class="btn-incrementer round-bordered" id="plus" data-offset="50">+</a>
+          </div>
+          <p id="cancel-add">Cancel</p>
+        <% end %>
+      </div>
   </div>
+  <% if @user.dj == false %>
+    <div class="recent-bids">
+      <p>Your Recent Bids</p>
+      <% @recent_10_bids.each do |bid| %>
+        <div class="row">
+          <div class="song-card">
+            <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
+            <span class="song-title"><%= Track.find(bid.event_track.track_id).title %></span>
+            <span class="song-artist"><%= Track.find(bid.event_track.track_id).artist %></span>
+            <span class="song-bid">£<%= bid.amount %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
+<script>
+  const plus_btn        = document.getElementById("plus");
+  const minus_btn       = document.getElementById("minus");
+  const submit          = document.getElementById("submit");
+  const form            = document.querySelector('form');
+  const balance_figure  = document.getElementById('balance-figure');
+  const add_money_section  = document.getElementById("add-money");
+  const add_money_btn   = document.getElementById("add-money-btn");
+  const add_money_form   = document.querySelector(".add-money-form");
+  const cancel_add_money_form = document.getElementById("cancel-add");
+
+  const change_value = (action) => {
+    if (action === 'plus') {
+      submit.value = `ADD £${((parseInt(submit.dataset.count, 10) + 50) / 100).toFixed(2)}`;
+      submit.dataset.count = parseInt(submit.dataset.count, 10) + 50
+    }
+    else if (action === 'minus') {
+      submit.value = `ADD £${((parseInt(submit.dataset.count, 10) - 50) / 100).toFixed(2)}`;
+      submit.dataset.count = parseInt(submit.dataset.count, 10) - 50
+    }
+  };
+
+  add_money_btn.addEventListener('click', () => {
+    add_money_btn.classList.toggle('hidden');
+    add_money_form.classList.toggle('hidden');
+  })
+
+  cancel_add_money_form.addEventListener('click', () => {
+    add_money_form.classList.toggle('hidden');
+    add_money_btn.classList.toggle('hidden');
+  })
+
+  plus_btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    change_value('plus');
+  });
+
+  minus_btn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (parseInt(submit.dataset.count, 10) > 50  ) {
+      change_value('minus');
+    }
+  });
+
+  form.addEventListener('submit', (event) => {
+    user_balance_cents.value = parseInt(user_balance_cents.value, 10) + parseInt(submit.dataset.count, 10)
+    balance_figure.innerText = (user_balance_cents.value / 100).toFixed(2)
+  })
+
+</script>
