@@ -1,9 +1,13 @@
 // Specific CSS for your home-page
 body {
-  min-height: 100vh; 
-  background: linear-gradient(180deg, #000000 62.45%, #B52B65 100%) 
+  min-height: 100vh;
+  background: linear-gradient(180deg, #000000 62.45%, #B52B65 100%)
 };
 
 h1 {
   font-weight: 900;
 };
+
+body.body-padding{
+  padding-bottom: 64px;
+}

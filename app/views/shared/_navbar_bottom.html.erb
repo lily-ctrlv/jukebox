@@ -12,7 +12,7 @@
                <p>£<%= User.first.balance %></p>
         </span>
         <span class="link-item">
-            <%= link_to 'tracks/show', class:"bottom-nav-link" do %>
+            <%= link_to tracks_path, class:"bottom-nav-link" do %>
               <%= image_tag "003-search.svg", alt: "alttext", class:"nav-icon"  %>
 
             <% end %>

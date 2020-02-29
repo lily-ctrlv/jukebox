@@ -1,39 +1,48 @@
 <div class="navbar d-flex align-items-center justify-content-center">
-  <p>Account</p>
+    <p>Account</p>
 </div>
 <div class="container">
-  <div class="account text-center">
-    <%= cl_image_tag(@user.avatar.key, class:"avatar-xxl", transformation: [ {
+    <div class="account text-center">
+        <%= cl_image_tag(@user.avatar.key, class:"avatar-xxl", transformation: [ {
       :width=>200,
       :height=>200,
       :gravity=>"face",
       :crop=>"thumb"
     } ] )%>
-    <div class="account-name-infos">
-      <p id="full-name"><%= @user.first_name %> <%= @user.last_name %></p>
-      <p id="display-name">Spotify: <%= @user.display_name %></p>
-    </div>
-    <div class="account-balance">
-      <p id="balance-amount">£<%= @user.balance %></p>
-      <p id="balance-tag">Balance</p>
-    </div>
-    <div class="btn btn-pink">
-      Add Money
-    </div>
-  </div>
-  <div class="recent-bids">
-    <p>Your Recent Bids</p>
-    <% @recent_10_bids.each do |bid| %>
-      <div class="row">
-        <div class="song-card">
-          <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
-          <span class="song-title"><%= Track.find(bid.event_track.track_id).title %></span>
-          <span class="song-artist"><%= Track.find(bid.event_track.track_id).artist %></span>
-          <span class="song-bid">£<%= bid.amount %></span>
+        <div class="account-name-infos">
+            <p id="full-name">
+                <%= @user.first_name %>
+                <%= @user.last_name %>
+            </p>
+            <p id="display-name">Spotify:
+                <%= @user.display_name %>
+            </p>
         </div>
-      </div>
-    <% end %>
-  </div>
+        <div class="account-balance">
+            <p id="balance-amount">£
+                <%= @user.balance %>
+            </p>
+            <p id="balance-tag">Balance</p>
+        </div>
+        <div class="btn btn-pink">
+            Add Money
+        </div>
+    </div>
+    <div class="recent-bids">
+        <p>Your Recent Bids</p>
+        <% @recent_10_bids.each do |bid| %>
+        <div class="row">
+            <div class="song-card">
+                <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
+                <span class="song-title">
+                    <%= Track.find(bid.event_track.track_id).title %></span>
+                <span class="song-artist">
+                    <%= Track.find(bid.event_track.track_id).artist %></span>
+                <span class="song-bid">£
+                    <%= bid.amount %></span>
+            </div>
+        </div>
+        <% end %>
+    </div>
 </div>
-
-    <%= render 'shared/navbar_bottom' %>
+<%= render 'shared/navbar_bottom' %>

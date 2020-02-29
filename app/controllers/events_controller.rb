@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def show
     @events = Event.all
+    @body_padding = false
   end
 
   def new

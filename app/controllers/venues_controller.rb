@@ -1,6 +1,8 @@
 class VenuesController < ApplicationController
   def show
     @venue = Venue.find(params[:id])
+    @body_padding = true
+
   end
 
   private

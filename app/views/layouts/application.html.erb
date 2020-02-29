@@ -1,3 +1,7 @@
+<!-- the line below will add bottom padding only to pages which has the navbar bottom -->
+<!-- this logic is added on the controller of each of those acrtions -->
+<!-- body{:class @body_padding ? "body-padding" : "test"} -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +18,8 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
+
+
