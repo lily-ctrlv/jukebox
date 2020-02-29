@@ -18,6 +18,9 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'active_storage_validations'
 
+gem 'money-rails'
+gem 'stripe'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
