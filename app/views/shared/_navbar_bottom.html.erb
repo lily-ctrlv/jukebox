@@ -1,20 +1,19 @@
 <nav class="navbar navbar-bottom navbar-default fixed-bottom">
     <div class="container d-flex">
         <span class="link-item">
-
-          <!-- this should be changed to user_path(current_user.id) once a login logic has been built
+            <!-- this should be changed to user_path(current_user.id) once a login logic has been built
           then also need to encapsulate within the logged in logic -->
-              <%= link_to  user_path(User.first), class:"bottom-nav-link"  do%>
-              <%= image_tag "004-user.svg", alt: "alttext",  class:"nav-icon"  %>
-              <%=  %>
-
-              <% end %>
-               <p>£<%= User.first.balance %></p>
+            <%= link_to  user_path(User.first), class:"bottom-nav-link"  do%>
+            <%= image_tag "004-user.svg", alt: "alttext",  class:"nav-icon"  %>
+            <%=  %>
+            <% end %>
+            <p>£
+                <%= User.first.balance %>
+            </p>
         </span>
         <span class="link-item">
-            <%= link_to 'tracks/show', class:"bottom-nav-link" do %>
-              <%= image_tag "003-search.svg", alt: "alttext", class:"nav-icon"  %>
-
+            <%= link_to track_path  , class:"bottom-nav-link" do %>
+            <%= image_tag "003-search.svg", alt: "alttext", class:"nav-icon"  %>
             <% end %>
             <p>Search</p>
         </span>

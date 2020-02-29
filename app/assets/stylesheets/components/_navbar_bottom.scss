@@ -6,9 +6,13 @@
 
 }
 
-.navbar .container {
-  flex-wrap: nowrap;
-  justify-content: space-around;
+.nav-container-top {
+    position: absolute;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: nowrap;
 }
 
 .link-item {
@@ -38,3 +42,5 @@
   text-decoration: none;
   color: white;
 }
+
+

@@ -1,14 +1,15 @@
-<div class="navbar d-flex align-items-center justify-content-center">
-  <p>Account</p>
-</div>
+<% content_for :title, "Account" %>
+
+
 <div class="container">
-  <div class="account text-center">
-    <%= cl_image_tag(@user.avatar.key, class:"avatar-xxl", transformation: [ {
+    <div class="account text-center">
+        <%= cl_image_tag(@user.avatar.key, class:"avatar-xxl", transformation: [ {
       :width=>200,
       :height=>200,
       :gravity=>"face",
       :crop=>"thumb"
     } ] )%>
+
     <div class="account-name-infos">
       <p id="full-name">
         <%= @user.first_name %> <%= @user.last_name %>
@@ -67,7 +68,6 @@
     </div>
   <% end %>
 </div>
-<%= render 'shared/navbar_bottom' %>
 
 <script>
   const plus_btn        = document.getElementById("plus");
