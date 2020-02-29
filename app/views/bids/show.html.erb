@@ -1,2 +1,18 @@
-<% content_for :title, "Bids" %>
+<% content_for :title, "Bid" %>
+
+<div class="bid-song-info d-flex">
+  <%= image_tag "https://pbs.twimg.com/media/EJCTLvNWwAA_d4z.jpg", alt: "alttext", class: "album-cover" %>
+  <p class="bid-song-title">I Like it</p>
+  <p class="bid-artist">Song by Cardi B</p>
+</div>
+
+<div class="place-bid d-flex">
+  <%= image_tag "005-plus.svg", alt: "plus"%>
+  <p id="current-bid">£0.05</p>
+  <%= image_tag "006-minus.svg", alt: "minus" %>
+</div>
+
+<div class="bottom d-flex">
+  <button class="btn-pink btn btn-primary">BID</button>
+</div>
 
