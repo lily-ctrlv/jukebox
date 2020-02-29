@@ -1,0 +1,14 @@
+<nav class="navbar navbar-top navbar-default fixed-top">
+    <div class="container d-flex nav-container">
+        <span>
+            <%= link_to  user_path(User.first), class:"bottom-nav-link"  do%>
+            <%= image_tag "002-left.svg", alt: "alttext",  class:"nav-icon"  %>
+            <%=  %>
+            <% end %>
+        </span>
+        <span>
+            <p class="page_title">
+                <%= yield(:title) %>
+            </p>
+        </span>
+</nav>

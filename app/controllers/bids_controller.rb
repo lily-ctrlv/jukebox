@@ -8,7 +8,6 @@ class BidsController < ApplicationController
     @event_track = EventTrack.find(user_id: current_user.id)
 
     # the below is necessary for views using the navbar
-    @body_padding = true
   end
 
   def new

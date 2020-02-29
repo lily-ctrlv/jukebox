@@ -6,7 +6,6 @@ class EventTracksController < ApplicationController
   def show
     @event_track = EventTrack.find(params[:id])
     @bid = Bid.new
-    @body_padding = true
   end
 
   def new

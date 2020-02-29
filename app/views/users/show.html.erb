@@ -1,6 +1,7 @@
-<div class="navbar d-flex align-items-center justify-content-center">
-    <p>Account</p>
-</div>
+<% content_for :title, "Account" %>
+
+<%= render 'shared/navbar_top' %>
+
 <div class="container">
     <div class="account text-center">
         <%= cl_image_tag(@user.avatar.key, class:"avatar-xxl", transformation: [ {
