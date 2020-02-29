@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :events, only: [:index, :show] do
+  resources :events, only: [:index, :show, :new] do
     resources :event_tracks, only: [:index, :show]
   end
   
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   # resources :bids, except: [ :show, :destroy, :new, :create]
+
 
   resources :users, only: [ :show ] do
     resources :bids, only: [ :index, :show ]
