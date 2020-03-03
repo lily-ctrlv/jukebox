@@ -1,0 +1,13 @@
+current directory: /Users/ericburgerdesign/code/EricPBurger/jukebox/vendor/ruby/2.6.0/gems/json-2.3.0/ext/json
+/Users/ericburgerdesign/.rbenv/versions/2.6.3/bin/ruby -I /Users/ericburgerdesign/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20200303-32357-15ws25e.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ericburgerdesign/code/EricPBurger/jukebox/vendor/ruby/2.6.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/ericburgerdesign/code/EricPBurger/jukebox/vendor/ruby/2.6.0/gems/json-2.3.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/ericburgerdesign/code/EricPBurger/jukebox/vendor/ruby/2.6.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" install

@@ -245,7 +245,7 @@ DEPENDENCIES
   pg_search
   pry-byebug
   pry-rails
-  puma (~> 4.3, >= 4.3.3)
+  puma
   rails (= 5.2.4.1)
   redis
   sassc-rails
