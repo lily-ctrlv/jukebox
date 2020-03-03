@@ -1,0 +1,20 @@
+<nav class="navbar navbar-bottom navbar-default fixed-bottom">
+    <div class="container d-flex">
+        <div class="link-item">
+          <!-- this should be changed to user_path(current_user.id) once a login logic has been built
+          then also need to encapsulate within the logged in logic -->
+          <%= link_to user_path(User.first), class:"bottom-nav-link"  do%>
+            <%= image_tag "004-user.svg", alt: "alttext",  class:"nav-icon"  %>
+          <% end %>
+          <p>£<%= User.first.balance %></p>
+        </div>
+        <div class="link-item">
+          <%= link_to 'Playlist', event_event_track_path(Event.first, EventTrack.first) %>
+        </div>
+        <div class="link-item">
+          <%= link_to tracks_path, class:"bottom-nav-link" do %>
+            <%= image_tag "003-search.svg", alt: "alttext", class:"nav-icon"  %>
+          <% end %>
+          <p>Search</p>
+        </div>
+</nav>

@@ -17,6 +17,14 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'active_storage_validations'
+gem 'json'
+gem 'oauth', '~> 0.5.1'
+
+gem 'money-rails'
+gem 'stripe'
+
+gem 'pg_search'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_161615) do
+ActiveRecord::Schema.define(version: 2020_02_29_142607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,23 @@ ActiveRecord::Schema.define(version: 2020_02_22_161615) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "balance_payments", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "GBP", null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_balance_payments_on_user_id"
+  end
+
   create_table "bids", force: :cascade do |t|
-    t.integer "amount"
     t.bigint "event_track_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
     t.index ["event_track_id"], name: "index_bids_on_event_track_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
@@ -49,10 +60,11 @@ ActiveRecord::Schema.define(version: 2020_02_22_161615) do
   create_table "event_tracks", force: :cascade do |t|
     t.bigint "track_id"
     t.bigint "event_id"
-    t.integer "total_bid_amount"
+
     t.integer "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_bid_amount_cents", default: 0, null: false
     t.index ["event_id"], name: "index_event_tracks_on_event_id"
     t.index ["track_id"], name: "index_event_tracks_on_track_id"
   end
@@ -70,6 +82,23 @@ ActiveRecord::Schema.define(version: 2020_02_22_161615) do
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+
+  create_table "payments", force: :cascade do |t|
+    t.string "state"
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "title"
     t.string "artist"
@@ -85,10 +114,13 @@ ActiveRecord::Schema.define(version: 2020_02_22_161615) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "display_name"
-    t.integer "balance"
+
     t.boolean "dj"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "balance_cents", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -101,4 +133,6 @@ ActiveRecord::Schema.define(version: 2020_02_22_161615) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "balance_payments", "users"
+  add_foreign_key "payments", "users"
 end

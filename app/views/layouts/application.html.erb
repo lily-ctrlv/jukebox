@@ -3,20 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JukeBox</title>
+    <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
-    
-    <!-- <%= render 'shared/navbar' %> -->
 
+  <% if params[:controller] == "pages" || (params[:controller] == 'events' && params[:action] == 'show') %>
+    <body>
+  <% elsif params[:controller] == 'tracks' && params[:action] == 'index' %>
+    <body class="padded-body black-background">
+    <%= render 'shared/navbar_bottom'%>
+  <% elsif params[:controller] == 'users' && params[:action] == 'show' %>
+    <body class="padded-body">
+    <%= render 'shared/navbar_bottom' %>
+    <%= render 'shared/navbar_top' %>
+  <% else%>
+    <body class="padded-body black-background">
+    <%= render 'shared/navbar_bottom' %>
+    <%= render 'shared/navbar_top' %>
+  <%end%>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
+
+

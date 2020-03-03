@@ -1,3 +1,4 @@
+
 <div class="song-card" data-id=<%= "#{track.id}"%> >
     <!-- the img tag will be replaced with a rails img tag -->
     <% if track.cover_photo.attached? %>
@@ -22,6 +23,7 @@
             <img class="avatar-sm small-avatar3" src="https://via.placeholder.com/20x20.png" alt="">
         <!-- <p clas s="bidders">+3</p> -->
         </span>
+        <p class="bidders">+3</p>
     </div>
 </div>
 <div class="form d-none">

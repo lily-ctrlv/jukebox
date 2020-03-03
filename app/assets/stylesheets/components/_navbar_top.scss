@@ -1,0 +1,30 @@
+.navbar-top {
+  height: 53px;
+  background-color: black;
+  padding: 0px;
+}
+
+.nav-container {
+  position: absolute;
+  top: 25px;
+}
+
+.page-title {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.back-arrow {
+  position: absolute;
+  left: 13px;
+}
+
+body.padded-body{
+  padding-bottom: 64px;
+  padding-top: 78px;
+}
+
+body.black-background {
+  background: black;
+}

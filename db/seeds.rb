@@ -11,40 +11,50 @@ puts 'Creating users...'
 james = User.new(
   email: 'james@jukebox.org',
   password: '123456',
+  first_name: 'James',
+  last_name: 'Trinder',
   display_name: 'jukebox_james',
-  balance: 1000,
+  balance_cents: 1000,
   dj: false)
 james.avatar.attach(io: open('https://avatars3.githubusercontent.com/u/39556334?s=460&v=4'), filename: "james_face.jpg", content_type: "image/jpg")
 james.save!
 eric = User.new(
   email: 'eric@jukebox.org',
   password: '123456',
+  first_name: 'Eric',
+  last_name: 'Burger',
   display_name: 'jukebox_eric',
-  balance: 2000,
+  balance_cents: 800,
   dj: false)
 eric.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/25728050?s=460&v=4'), filename: "eric_face.jpg", content_type: "image/jpg")
 eric.save!
 lili = User.new(
   email: 'lili@jukebox.org',
   password: '123456',
+  first_name: 'Liliana',
+  last_name: 'Martins Cosentino',
   display_name: 'jukebox_lili',
-  balance: 500,
+  balance_cents: 500,
   dj: false)
 lili.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/39335511?s=460&v=4'), filename: "lili_face.jpg", content_type: "image/jpg")
 lili.save!
 jamie = User.new(
   email: 'jamie@jukebox.org',
   password: '123456',
+  first_name: 'Jamie',
+  last_name: 'Newton',
   display_name: 'jukebox_jamie',
-  balance: 800,
+  balance_cents: 750,
   dj: false)
 jamie.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/33573418?s=460&v=4'), filename: "jamie_face.jpg", content_type: "image/jpg")
 jamie.save!
 shirley = User.new(
   email: 'shirley@jukebox.org',
   password: '123456',
+  first_name: 'Shirley',
+  last_name: 'Whirley',
   display_name: 'dj_shirley',
-  balance: 0,
+  balance_cents: 0,
   dj: true)
 shirley.avatar.attach(io: open('https://www.grammy.com/sites/com/files/styles/image_landscape_hero/public/muzooka/Taylor%2BSwift/Taylor%2520Swift_16_9_1578384864.jpg?itok=EHqXQIe6'), filename: "tay_face.jpg", content_type: "image/jpg")
 shirley.save!
@@ -124,24 +134,28 @@ puts 'Venues created!'
 
 date_time = Time.new
 start_date_time = Time.new(date_time.year, date_time.month, date_time.day, date_time.hour, 0, 0)
-end_date_time = Time.new(date_time.year, date_time.month, date_time.day, date_time.hour + 3, 0, 0)
+end_date_time = Time.new(date_time.year, date_time.month, date_time.day + 1, 3, 0, 0)
 
 puts 'Creating events...'
-fomo_friday = Event.create!(
+fomo_friday = Event.new(
   name: 'Fomo Friday',
   theme: 'Pop',
   venue_id: pryzm.id,
   user_id: shirley.id,
   start_date_time: start_date_time,
   end_date_time: end_date_time)
+fomo_friday.event_image.attach(io: open('https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'), filename: "fomo_friday_image.jpg", content_type: "image/jpg")
+fomo_friday.save!
 puts 'Events created!'
-just_juice = Event.create!(
+just_juice = Event.new(
   name: 'Just Juice',
   theme: 'Pop',
   venue_id: queen_of_hoxton.id,
   user_id: shirley.id,
   start_date_time: start_date_time,
   end_date_time: end_date_time)
+just_juice.event_image.attach(io: open('https://images.unsplash.com/photo-1565034400361-c05ee5e2cbb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'), filename: "just_juice_image.jpg", content_type: "image/jpg")
+just_juice.save!
 puts 'Events created!'
 
 puts 'Creating event tracks...'
@@ -164,32 +178,32 @@ puts 'Created event tracks!'
 
 puts 'Creating bids...'
 Bid.create!(
-  amount: 50,
+  amount_cents: 50,
   event_track_id: juice_event_track.id,
   user_id: james.id
   )
 Bid.create!(
-  amount: 25,
+  amount_cents: 25,
   event_track_id: worship_event_track.id,
   user_id: james.id
   )
 Bid.create!(
-  amount: 10,
+  amount_cents: 10,
   event_track_id: shake_it_off_event_track.id,
   user_id: james.id
   )
 Bid.create!(
-  amount: 30,
+  amount_cents: 30,
   event_track_id: juice_event_track.id,
   user_id: eric.id
   )
 Bid.create!(
-  amount: 10,
+  amount_cents: 10,
   event_track_id: worship_event_track.id,
   user_id: lili.id
   )
 Bid.create!(
-  amount: 40,
+  amount_cents: 40,
   event_track_id: shake_it_off_event_track.id,
   user_id: jamie.id
   )
@@ -208,4 +222,3 @@ shake_it_off_bids = Bid.where(event_track_id: shake_it_off_event_track.id)
 total_shake_it_off_bids = shake_it_off_bids.sum { |b| b.amount }
 shake_it_off_event_track.update!(total_bid_amount: total_shake_it_off_bids)
 puts 'Total bids tallied!'
-

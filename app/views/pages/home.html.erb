@@ -1,18 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-    <%= render 'shared/button' %>
-    <br>
-    <%= render 'shared/search' %>
-    <br>
-    <br>
-    <%= render 'shared/song_card' %>
+<% content_for :title, "JukeBox" %>
 
 
-
-
-<!-- <div class="container min-vh-100">
-  <div class="row min-vh-100 justify-content-center align-items-center">
-    <h1 align="center">JukeBox</h1>
+<div class="container">
+  <div class="banner">
+  	<div class="banner-content text-center">
+  	  <%= image_tag 'jukebox-icon.png' %>
+  	  <h1>JukeBox</h1>
+        <p>Control the music</p>
+        <% if Event.first.present? %>
+	        <%= link_to "Login with Spotify", event_path(Event.first), class: "btn btn-green" %>
+	    <% end %>
+  	</div>
   </div>
-</div> -->
+</div>

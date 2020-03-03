@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
   def show
-    @events = Event.all
+    @event = Event.find(params[:id])
+    @other_events = Event.where.not(id: @event.id)
   end
 
   def new
     if current_user.dj
-    @event = Event.new
+      @event = Event.new
     end
   end
 
@@ -20,6 +21,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:theme, :user, :event)
+    params.require(:event).permit(:theme, :user, :event, :event_image)
   end
 end

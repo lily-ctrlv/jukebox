@@ -1,0 +1,65 @@
+p {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+.account-name-infos {
+
+  #full-name {
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 900;
+  }
+  #display-name {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 18px;
+    opacity: 0.8;
+  }
+}
+.account-balance {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  #balance-amount {
+    font-size: 48px;
+    line-height: 100%;
+  }
+  #balance-tag {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.recent-bids {
+  margin-top: 40px;
+}
+
+.balance-incrementer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-incrementer {
+  background-color: transparent;
+  padding: 16px 24px;
+  border: none;
+}
+
+.round-bordered {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  width: 44px;
+  font-size: 22px;
+  color: #fff;
+  height: 44px;
+  padding: 3px
+}
+
+.add-money-form {
+  margin:0 auto;
+  width: 90%;
+}
+
+.hidden {
+  display: none;
+}

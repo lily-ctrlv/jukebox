@@ -6,6 +6,8 @@ class BidsController < ApplicationController
   def show
     @bid = Bid.find_by(user_id: current_user.id, id: params[:id])
     @event_track = EventTrack.find(user_id: current_user.id)
+
+    # the below is necessary for views using the navbar
   end
 
   def new
