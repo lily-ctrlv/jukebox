@@ -10,7 +10,9 @@
       <span id="event-date">21 MAR 2020</span>
       </p>
       <div class="row">
+        <% if Event.first.present? %>
           <%= link_to "I'm here", event_event_track_path(Event.first), class: "btn btn-primary btn-pink" %>
+        <% end %>
       </div>
       <br>
       <h2>Not here?</h2>
