@@ -3,16 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :events, only: [:index, :show, :new] do
-    resources :event_tracks, only: [:index, :show]
+  resources :events, only: [ :index, :show, :new ] do
+  resources :event_tracks, only: [:show] do
+      resources :bids, only: [ :index, :show, :new, :create ]
+    end
   end
 
-  resources :event_tracks, only: [:create, :new, :edit, :update] do
-    resources :bids, only: [ :index, :show, :new, :create ]
-  end
-
-  # resources :bids, except: [ :show, :destroy, :new, :create]
-  resources :tracks
+  resources :tracks, only: [ :index ]
 
   resources :users, only: [ :show ] do
     resources :bids, only: [ :index, :show ]

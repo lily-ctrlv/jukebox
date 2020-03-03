@@ -12,7 +12,7 @@
 
   <% if current_page?('/') || current_page?(:controller => 'events', :action => 'show') %>
     <body>
-  <% elsif current_page?(:controller => 'tracks', :action => 'show') %>
+  <% elsif current_page?(:controller => 'tracks', :action => 'index') %>
     <body class="padded-body black-background">
     <%= render 'shared/navbar_bottom'%>
   <% elsif current_page?(:controller => 'users', :action => 'show') %>
