@@ -10,12 +10,12 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
 
-  <% if current_page?('/') || current_page?(:controller => 'events', :action => 'show') %>
+  <% if params[:controller] == "pages" || (params[:controller] == 'events' && params[:action] == 'show') %>
     <body>
-  <% elsif current_page?(:controller => 'tracks', :action => 'index') %>
+  <% elsif params[:controller] == 'tracks' && params[:action] == 'index' %>
     <body class="padded-body black-background">
     <%= render 'shared/navbar_bottom'%>
-  <% elsif current_page?(:controller => 'users', :action => 'show') %>
+  <% elsif params[:controller] == 'users' && params[:action] == 'show' %>
     <body class="padded-body">
     <%= render 'shared/navbar_bottom' %>
     <%= render 'shared/navbar_top' %>
