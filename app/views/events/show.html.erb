@@ -7,7 +7,7 @@
       <p id="event-date"><%= @event.start_date_time %></p>
       <% if Event.first.present? %>
         <div class="event-actions">
-          <%= link_to "I'm here", event_event_track_path(@event.id), class: "btn btn-primary btn-pink mb-3" %>
+          <%= link_to "I'm here", event_event_track_path(@event.id), class: "btn btn-pink mb-3" %>
           <p><%= link_to 'Not here?', event_path(@other_events.sample) %></p>
         </div>
       <% end %>

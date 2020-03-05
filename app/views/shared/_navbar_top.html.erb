@@ -1,14 +1,22 @@
 <nav class="navbar navbar-top navbar-default fixed-top">
-    <div class="nav-container-top">
-        <span class="back-arrow">
-            <%= link_to request.headers['HTTP_REFERER'], class:"bottom-nav-link"  do%>
-            <%= image_tag "002-left.svg", alt: "alttext",  class:"nav-icon"  %>
-            <%=  %>
-            <% end %>
-        </span>
-        <span>
-            <p class="page_title">
-                <%= yield(:title) %>
-            </p>
-        </span>
+  <div class="nav-container-top text-center">
+    <% if yield(:title) == 'Search' %>
+      <div class="left-icon">
+        <%= link_to "<i class='fas fa-chevron-left'></i>".html_safe, request.headers['HTTP_REFERER'], class:"nav-icon" %>
+      </div>
+    <% end %>
+    <div>
+      <p class="page-title"><%= yield(:title) %></p>
+    </div>
+    <% if yield(:title) == 'Playlist' %>
+      <div class="right-icon">
+        <%= link_to "<i class='fas fa-times'></i>".html_safe, event_path(Event.first), class:"nav-icon" %>
+      </div>
+    <% end %>
+    <% if yield(:title) == 'Account' %>
+      <div class="right-icon">
+        <%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: 'delete', class:"nav-icon" %>
+      </div>
+    <% end %>
+  </div>
 </nav>
