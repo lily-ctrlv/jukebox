@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
   create_table "event_tracks", force: :cascade do |t|
     t.bigint "track_id"
     t.bigint "event_id"
-
     t.integer "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,14 +88,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
-
-  create_table "payments", force: :cascade do |t|
-    t.string "state"
-    t.string "checkout_session_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -114,7 +105,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "display_name"
-
     t.boolean "dj"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -134,5 +124,4 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "balance_payments", "users"
-  add_foreign_key "payments", "users"
 end
