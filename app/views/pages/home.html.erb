@@ -1,6 +1,5 @@
 <% content_for :title, "JukeBox" %>
 
-
 <div class="container">
   <div class="banner">
   	<div class="banner-content text-center">
@@ -8,11 +7,16 @@
   	  <h1>JukeBox</h1>
       <p>Control the music</p>
       <% if Event.first.present? %>
-      <div class="login-actions">
-        <%= link_to "<i class='fab fa-spotify'></i> Continue with Spotify".html_safe, event_path(Event.first), class: "btn btn-green" %>
-        <%= link_to "Login", new_user_session_path, class: "btn btn-pink" %>
-        <%= link_to "Create Account", new_user_registration_path, class: "btn btn-neutral" %>
-      </div>
+        <div class="login-actions">
+          <% if current_user %>
+            <%= link_to "Find PLaylists".html_safe, event_path(Event.first), class: "btn btn-pink" %>
+            <%= link_to "Logout", destroy_user_session_path, method: 'delete', class: "btn btn-neutral" %>
+          <% else %>
+            <%= link_to "<i class='fab fa-spotify'></i> Continue with Spotify".html_safe, event_path(Event.first), class: "btn btn-green" %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-pink" %>
+            <%= link_to "Create Account", new_user_registration_path, class: "btn btn-neutral" %>
+          <% end %>
+        </div>
 	    <% end %>
   	</div>
   </div>

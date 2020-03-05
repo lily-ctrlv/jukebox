@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:balance_cents])
   end
+
+  def after_sign_in_path_for(_resource)
+    current_user.dj ? user_path(current_user.id) : event_path(Event.first)
+  end
 end

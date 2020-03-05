@@ -1,26 +1,38 @@
 .navbar-top {
   height: 53px;
+  width: 100%;
   background-color: black;
-  padding: 0px;
 }
 
-.nav-container {
-  position: absolute;
+.nav-container-top {
+  width: 100%;
   top: 25px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  flex-wrap: nowrap;
 }
 
 .page-title {
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 23px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
-.back-arrow {
+.nav-icon {
+  color: #fff;
+}
+
+.left-icon {
   position: absolute;
-  left: 13px;
+  left: 25px;
 }
 
-body.padded-body{
+.right-icon {
+  position: absolute;
+  right: 25px;
+}
+
+body.padded-body {
   padding-bottom: 64px;
   padding-top: 78px;
 }
