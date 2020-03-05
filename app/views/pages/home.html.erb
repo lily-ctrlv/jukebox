@@ -10,7 +10,8 @@
       <% if Event.first.present? %>
       <div class="login-actions">
         <%= link_to "<i class='fab fa-spotify'></i> Continue with Spotify".html_safe, event_path(Event.first), class: "btn btn-green" %>
-        <p><%= link_to 'Login', new_user_session_path %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-pink" %>
+        <%= link_to "Create Account", new_user_registration_path, class: "btn btn-neutral" %>
       </div>
 	    <% end %>
   	</div>
