@@ -1,6 +1,6 @@
 class EventTrack < ApplicationRecord
   belongs_to :event
-  belongs_to :tracks, optional: true
+  belongs_to :track, optional: true
   has_many :bids
   has_many :users
 
@@ -10,4 +10,13 @@ class EventTrack < ApplicationRecord
   validates :rank, presence: true, numericality: true
 
   monetize :total_bid_amount_cents
+
+  def total_bids
+    sum = 0
+    bids.each do |bid|
+      sum += bid.amount
+    end
+    return sum
+  end
+
 end

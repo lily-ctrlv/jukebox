@@ -7,7 +7,9 @@
   	  <%= image_tag 'jukebox-icon.png' %>
   	  <h1>JukeBox</h1>
         <p>Control the music</p>
-        <%= link_to "Login with Spotify", event_path(Event.first), class: "btn btn-green" %>
+        <% if Event.first.present? %>
+	        <%= link_to "Login with Spotify", event_path(Event.first), class: "btn btn-green" %>
+	    <% end %>
   	</div>
   </div>
 </div>
