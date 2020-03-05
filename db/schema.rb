@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
   create_table "event_tracks", force: :cascade do |t|
     t.bigint "track_id"
     t.bigint "event_id"
+
     t.integer "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,7 +82,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
-<<<<<<< Updated upstream
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
-=======
+
   create_table "payments", force: :cascade do |t|
     t.string "state"
     t.string "checkout_session_id"
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_payments_on_user_id"
->>>>>>> Stashed changes
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -115,10 +114,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "display_name"
-<<<<<<< Updated upstream
-=======
-    t.integer "balance_pennies"
->>>>>>> Stashed changes
     t.boolean "dj"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -137,9 +132,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-<<<<<<< Updated upstream
   add_foreign_key "balance_payments", "users"
-=======
   add_foreign_key "payments", "users"
->>>>>>> Stashed changes
 end

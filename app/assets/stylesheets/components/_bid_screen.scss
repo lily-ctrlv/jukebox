@@ -1,0 +1,50 @@
+div.bid-song-info {
+
+  margin-top: 35px;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+
+  .album-cover {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 25px;
+  }
+
+  .bid-song-title {
+
+  }
+
+  .bid-artist {
+
+  }
+}
+
+div.place-bid {
+  align-items: center;
+  justify-content:center;
+  margin-top: 35px;
+
+  img {
+    height: 45px;
+    width: 45px;
+    margin: 10px;
+  }
+
+  p {
+    font-size: 48px;
+    font-weight: 900;
+
+  }
+}
+
+div.bottom {
+  justify-content: center;
+
+ .btn {
+  bottom: 8.99%;
+  position: absolute;
+  }
+}
+
+
