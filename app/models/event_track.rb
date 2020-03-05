@@ -19,4 +19,11 @@ class EventTrack < ApplicationRecord
     return sum
   end
 
+  def done?
+    @done
+  end
+
+  def mark_as_done!
+    @done = true
+  end
 end

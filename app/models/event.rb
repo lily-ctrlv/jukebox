@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :venue
   belongs_to :user
   has_one_attached :event_image
+  has_many :event_tracks
 
   validates :theme, presence: true
   validates :name, presence: true
