@@ -1,9 +1,9 @@
 <% content_for :title, "Account" %>
-
+  <%= link_to '<i class="fas fa-sign-out-alt"></i>'.html_safe, destroy_user_session_path, method: 'delete' %>
 
 <div class="container">
     <div class="account text-center">
-        <%= cl_image_tag(@user.avatar.key, class:"avatar-xxl", transformation: [ {
+        <%= cl_image_tag(current_user.avatar.key, class:"avatar-xxl", transformation: [ {
       :width=>200,
       :height=>200,
       :gravity=>"face",
@@ -12,18 +12,18 @@
 
     <div class="account-name-infos">
       <p id="full-name">
-        <%= @user.first_name %> <%= @user.last_name %>
-        <% if @user.dj %>
+        <%= current_user.first_name %> <%= current_user.last_name %>
+        <% if current_user.dj %>
           <span class="badge badge-secondary pl-2 pr-2">DJ</span>
         <% end %>
       </p>
-      <p id="display-name">Spotify: <%= @user.display_name %></p>
+      <p id="display-name">Spotify: <%= current_user.display_name %></p>
     </div>
     <div class="account-balance">
-      <p id="balance-amount">£<span id="balance-figure"><%= @user.balance %><span></p>
+      <p id="balance-amount">£<span id="balance-figure"><%= current_user.balance %><span></p>
       <p id="balance-tag">Balance</p>
     </div>
-    <% if @user.dj %>
+    <% if current_user.dj %>
       <div class="btn btn-neutral">
         PAY OUT MY BALANCE
       </div>
@@ -52,7 +52,7 @@
         <% end %>
       </div>
   </div>
-  <% if @user.dj == false %>
+  <% if current_user.dj == false %>
     <div class="recent-bids">
       <p>Your Recent Bids</p>
       <% @recent_10_bids.each do |bid| %>
@@ -67,7 +67,6 @@
       <% end %>
     </div>
   <% end %>
-  <%= link_to 'Log out', destroy_user_session_path %>
 </div>
 
 <script>
