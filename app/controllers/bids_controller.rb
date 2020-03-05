@@ -19,18 +19,23 @@ class BidsController < ApplicationController
       redirect_to new_user_session_path
     else
       @bid = Bid.new(bid_params)
-      @bid.user_id = current_user.id
-      @bid.event_track_id = EventTrack.find(params[:event_track_id]).id
+      @bid.user = current_user
+      @bid.event_track = EventTrack.find(params[:event_track_id])
       if @bid.save
-        redirect_to user_bids_path(current_user.id)
+        redirect_to event_tracks_path
       else
-        @event_track = EventTrack.find(params[:event_track_id])
         # render 'event_tracks/show'
         redirect_to event_tracks_path
       end
     end
   end
 
+  def update
+    @bid = Bid.find(params[:amount])
+    if @bid.save
+      # render json:
+  end
+end
   private
 
   def bid_params
