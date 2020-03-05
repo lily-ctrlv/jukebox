@@ -7,4 +7,14 @@ class TracksController < ApplicationController
       Track.all
     end
   end
+
+  def show
+  	@track = Track.find(params[:id])
+  end
+
+  private
+
+  def track_params
+    params.require(:track).permit(:id)
+  end
 end

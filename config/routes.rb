@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tracks, only: [ :index ]
+  resources :tracks, only: [ :index, :show ]
 
   resources :users, only: [ :show ] do
     resources :bids, only: [ :index, :show ]
