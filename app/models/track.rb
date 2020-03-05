@@ -1,4 +1,6 @@
 class Track < ApplicationRecord
+  searchkick
+
   has_one_attached :cover_photo
   has_many :event_tracks
 

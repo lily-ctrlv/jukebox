@@ -24,6 +24,7 @@ gem 'money-rails'
 gem 'stripe'
 
 gem 'pg_search'
+gem 'searchkick'
 
 
 group :development do

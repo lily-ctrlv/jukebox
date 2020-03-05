@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_142607) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "display_name"
-
     t.boolean "dj"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
