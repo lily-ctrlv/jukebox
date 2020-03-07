@@ -2,6 +2,7 @@ class EventTracksController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @event_tracks = @event.event_tracks.order(total_bid_amount_cents: :desc)
+    @bid = Bid.new
   end
 
   def show
@@ -11,6 +12,7 @@ class EventTracksController < ApplicationController
 
   def new
     @event_track = EventTrack.new
+    @bid = Bid.new
   end
 
   def create
@@ -39,15 +41,23 @@ class EventTracksController < ApplicationController
   def destroy
     if current_user.dj
       @event_track = EventTrack.find(params[:id])
+      bids = @event_track.bids
+      bids.each do |bid|
+        refund = bid.amount_cents
+        user = bid.user
+        user.balance_cents += refund
+        user.save!
+      end
+      @event_track.bid.destroy
       @events_track.destroy
-  end
+    end
   end
 
   def mark_as_done
     if current_user.dj
-    @event_track = EventTrack.find(params[:id])
-    @event_track.mark_as_done!
-  end
+      @event_track = EventTrack.find(params[:id])
+      @event_track.mark_as_done!
+    end
   end
 
   private

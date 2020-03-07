@@ -15,6 +15,7 @@
     <!-- this will be coded as to have a random number generated -->
     <!-- this will be replaced by rails img tag -->
     <div class="card-right">
+  <% event_track = EventTrack.find_by(track_id: track.id)  %>
         <p class=" song-bid song-bid<%= "#{track.id}" %>" data-ref=<%= "#{track.id}" %>>£<span class="first-number">
         <%= event_track.total_bids %></span>.75</p>
         <span class="bidder-avatars">
@@ -27,7 +28,7 @@
     </div>
 </div>
 <div class="form d-none">
-  <%= simple_form_for([event_track, Bid.new]) do |f| %>
+  <%= simple_form_for([@event, event_track, @bid]) do |f| %>
       <%= f.input :amount %>
       <%= f.submit %>
   <% end %>
