@@ -61,12 +61,12 @@ shirley.save!
 puts 'Users created!'
 
 puts 'Creating tracks...'
-juice = Track.new(
-  title: 'Juice',
-  artist: 'Lizzo',
-  album: 'Cuz I Love You')
-juice.cover_photo.attach(io: open('https://images-na.ssl-images-amazon.com/images/I/61h8J%2BY55qL._AC_SX466_.jpg'), filename: "juice_cover.jpg", content_type: "image/jpg")
-juice.save!
+# juice = Track.new(
+#   title: 'Juice',
+#   artist: 'Lizzo',
+#   album: 'Cuz I Love You')
+# juice.cover_photo.attach(io: open("https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Lizzo_-_Cuz_I_Love_You.png/220px-Lizzo_-_Cuz_I_Love_You.png"), filename: "juice_cover.jpg", content_type: "image/jpg")
+# juice.save!
 shake_it_off = Track.new(
   title: 'Shake It Off',
   artist: 'Taylor Swift',
@@ -159,11 +159,11 @@ just_juice.save!
 puts 'Events created!'
 
 puts 'Creating event tracks...'
-juice_event_track = EventTrack.create!(
-  track_id: juice.id,
-  event_id: fomo_friday.id,
-  total_bid_amount: 0,
-  rank: 1)
+# juice_event_track = EventTrack.create!(
+#   track_id: juice.id,
+#   event_id: fomo_friday.id,
+#   total_bid_amount: 0,
+#   rank: 1)
 worship_event_track = EventTrack.create!(
   track_id: worship.id,
   event_id: fomo_friday.id,
