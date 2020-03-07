@@ -20,10 +20,11 @@ class EventTrack < ApplicationRecord
   end
 
   def done?
-    @done
+    done
   end
 
   def mark_as_done!
-    @done = true
+    done = true
+    save!
   end
 end
