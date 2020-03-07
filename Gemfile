@@ -26,7 +26,6 @@ gem 'stripe'
 gem 'pg_search'
 # gem 'searchkick'
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
