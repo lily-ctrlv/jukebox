@@ -6,7 +6,7 @@
           <%= link_to user_path(User.first), class:"bottom-nav-link"  do%>
             <%= image_tag "004-user.svg", alt: "alttext",  class:"nav-icon"  %>
           <% end %>
-          <p>£<%= User.first.balance %></p>
+          <p>£<%= current_user.balance %></p>
         </div>
         <div class="link-item">
           <%= link_to event_event_track_path(Event.first, EventTrack.first) do %>
