@@ -2,9 +2,9 @@
 <div class="song-card" data-id=<%= "#{track.id}"%> >
     <!-- the img tag will be replaced with a rails img tag -->
     <% if track.cover_photo.attached? %>
-      <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
+    <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
     <% else %>
-      <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
+    <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
     <% end %>
     <p class="song-title">
         <%= track.title %>
@@ -17,8 +17,7 @@
     <div class="card-right">
   <% event_track = EventTrack.find_by(track_id: track.id)  %>
         <p class=" song-bid song-bid<%= "#{track.id}" %>" data-ref=<%= "#{track.id}" %>>£<span class="first-number">
-        <%= event_track.total_bid_amount %></span></p>
-
+        <%= event_track.total_bids %></span>.75</p>
         <span class="bidder-avatars">
             <img class="avatar-sm small-avatar1" src="https://via.placeholder.com/20x20.png" alt="">
             <img class="avatar-sm small-avatar2" src="https://via.placeholder.com/20x20.png" alt="">
@@ -37,13 +36,3 @@
 </div>
 <div class="show d-none">
 </div>
-
-
-
-<!--
-
-<span class="bid-amount">0.25</span>
-
-<span class="minus-sign d-none"></span>
-<span class="plus-sign d-none"></span>
-<span class="bid-button d-none"></span> -->

@@ -19,8 +19,10 @@ class BidsController < ApplicationController
     else
       @bid = Bid.new(bid_params)
       @bid.user = current_user
+      @event_track.total_bid_amount_cents += params["bid"]["amount"].to_i * 100
+      @event_track.save!
       @bid.event_track = @event_track
-      if @bid.save
+      if @bid.save!
         redirect_to event_event_tracks_path
       else
         # render 'event_tracks/show'
