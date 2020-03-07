@@ -179,7 +179,7 @@ puts 'Created event tracks!'
 puts 'Creating bids...'
 Bid.create!(
   amount_cents: 50,
-  event_track_id: juice_event_track.id,
+  event_track_id: worship_event_track.id,
   user_id: james.id
   )
 Bid.create!(
@@ -194,7 +194,7 @@ Bid.create!(
   )
 Bid.create!(
   amount_cents: 30,
-  event_track_id: juice_event_track.id,
+  event_track_id: worship_event_track.id,
   user_id: eric.id
   )
 Bid.create!(
@@ -210,9 +210,9 @@ Bid.create!(
 puts 'Created bids!'
 
 puts 'Tallying total bids...'
-juice_bids = Bid.where(event_track_id: juice_event_track.id)
-total_juice_bids = juice_bids.sum { |b| b.amount }
-juice_event_track.update!(total_bid_amount: total_juice_bids)
+# juice_bids = Bid.where(event_track_id: juice_event_track.id)
+# total_juice_bids = juice_bids.sum { |b| b.amount }
+# juice_event_track.update!(total_bid_amount: total_juice_bids)
 
 worship_bids = Bid.where(event_track_id: worship_event_track.id)
 total_worship_bids = worship_bids.sum { |b| b.amount }
