@@ -61,12 +61,12 @@ shirley.save!
 puts 'Users created!'
 
 puts 'Creating tracks...'
-# juice = Track.new(
-#   title: 'Juice',
-#   artist: 'Lizzo',
-#   album: 'Cuz I Love You')
-# juice.cover_photo.attach(io: open("https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Lizzo_-_Cuz_I_Love_You.png/220px-Lizzo_-_Cuz_I_Love_You.png"), filename: "juice_cover.jpg", content_type: "image/jpg")
-# juice.save!
+juice = Track.new(
+  title: 'Juice',
+  artist: 'Lizzo',
+  album: 'Cuz I Love You')
+juice.cover_photo.attach(io: open("https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Lizzo_-_Cuz_I_Love_You.png/220px-Lizzo_-_Cuz_I_Love_You.png"), filename: "juice_cover.jpg", content_type: "image/jpg")
+juice.save!
 shake_it_off = Track.new(
   title: 'Shake It Off',
   artist: 'Taylor Swift',
@@ -159,11 +159,11 @@ just_juice.save!
 puts 'Events created!'
 
 puts 'Creating event tracks...'
-# juice_event_track = EventTrack.create!(
-#   track_id: juice.id,
-#   event_id: fomo_friday.id,
-#   total_bid_amount: 0,
-#   rank: 1)
+juice_event_track = EventTrack.create!(
+  track_id: juice.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 1)
 worship_event_track = EventTrack.create!(
   track_id: worship.id,
   event_id: fomo_friday.id,
@@ -179,7 +179,7 @@ puts 'Created event tracks!'
 puts 'Creating bids...'
 Bid.create!(
   amount_cents: 50,
-  event_track_id: worship_event_track.id,
+  event_track_id: juice_event_track.id,
   user_id: james.id
   )
 Bid.create!(
@@ -194,12 +194,12 @@ Bid.create!(
   )
 Bid.create!(
   amount_cents: 30,
-  event_track_id: worship_event_track.id,
+  event_track_id: juice_event_track.id,
   user_id: eric.id
   )
 Bid.create!(
   amount_cents: 10,
-  event_track_id: worship_event_track.id,
+  event_track_id: juice_event_track.id,
   user_id: lili.id
   )
 Bid.create!(
@@ -210,9 +210,9 @@ Bid.create!(
 puts 'Created bids!'
 
 puts 'Tallying total bids...'
-# juice_bids = Bid.where(event_track_id: juice_event_track.id)
-# total_juice_bids = juice_bids.sum { |b| b.amount }
-# juice_event_track.update!(total_bid_amount: total_juice_bids)
+juice_bids = Bid.where(event_track_id: juice_event_track.id)
+total_juice_bids = juice_bids.sum { |b| b.amount }
+juice_event_track.update!(total_bid_amount: total_juice_bids)
 
 worship_bids = Bid.where(event_track_id: worship_event_track.id)
 total_worship_bids = worship_bids.sum { |b| b.amount }
