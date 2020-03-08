@@ -23,8 +23,8 @@ gem 'oauth', '~> 0.5.1'
 gem 'money-rails'
 gem 'stripe'
 
-gem 'pg_search'
-# gem 'searchkick'
+# gem 'pg_search'
+gem 'searchkick'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
