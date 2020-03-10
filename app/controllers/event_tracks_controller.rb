@@ -1,11 +1,11 @@
 class EventTracksController < ApplicationController
-  def index
-    @event = Event.find(params[:event_id])
-    @event_tracks = @event.event_tracks.order(total_bid_amount_cents: :desc)
+
+  def index;
   end
 
   def show
-    @event_track = EventTrack.find(params[:id])
+    @event = Event.find(params[:event_id])
+    @event_tracks = @event.event_tracks.order(total_bid_amount_cents: :desc)
     @bid = Bid.new
   end
 

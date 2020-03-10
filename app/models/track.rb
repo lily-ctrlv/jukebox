@@ -1,6 +1,14 @@
 class Track < ApplicationRecord
   searchkick
 
+  def search_data
+  	{
+  	  title: title,
+  	  artist: artist,
+  	  album: album
+  	}
+  end
+
   has_one_attached :cover_photo
   has_many :event_tracks
 

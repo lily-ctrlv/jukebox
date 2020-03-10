@@ -65,7 +65,7 @@ juice = Track.new(
   title: 'Juice',
   artist: 'Lizzo',
   album: 'Cuz I Love You')
-juice.cover_photo.attach(io: open('https://images-na.ssl-images-amazon.com/images/I/61h8J%2BY55qL._AC_SX466_.jpg'), filename: "juice_cover.jpg", content_type: "image/jpg")
+juice.cover_photo.attach(io: open("https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Lizzo_-_Cuz_I_Love_You.png/220px-Lizzo_-_Cuz_I_Love_You.png"), filename: "juice_cover.jpg", content_type: "image/jpg")
 juice.save!
 shake_it_off = Track.new(
   title: 'Shake It Off',
@@ -199,7 +199,7 @@ Bid.create!(
   )
 Bid.create!(
   amount_cents: 10,
-  event_track_id: worship_event_track.id,
+  event_track_id: juice_event_track.id,
   user_id: lili.id
   )
 Bid.create!(
