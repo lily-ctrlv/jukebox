@@ -1,16 +1,15 @@
 <% content_for :title, "Search" %>
 <%= render 'shared/navbar_bottom' %>
 
-<%= form_tag tracks_path, method: :get do %>
-  <%= text_field_tag :query,
-  params[:query],
-  class: "form-control",
-  placeholder: "Find a track"
-%>
-<%= submit_tag "Search", class: "btn btn-pink" %>
-<% end %>
+<div class="container">
 
-<h2>Tracks</h2>
+    <%= form_tag tracks_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a track" %>
+    <% end %>
+
+</div>
+
+
 
 <% @tracks.each do |track| %>
 <%= link_to track_path(track.id) do %>
