@@ -3,8 +3,15 @@ const cards = document.querySelectorAll('.song-card')
 
 cards.forEach((card) => {
   card.addEventListener("click", (event) => {
+
     const form = card.parentNode.querySelector('.form');
-    form.classList.toggle('d-none');
+    const deletebtn = card.parentNode.querySelector('.delete');
+    if (form) {
+      form.classList.toggle('d-none');
+    } else if (deletebtn) {
+      deletebtn.classList.toggle('d-none')
+    }
+
   });
 
   const minus = card.parentNode.querySelector('.minus');

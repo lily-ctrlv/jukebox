@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :event_tracks, only: [:destroy]
+
   resources :tracks, only: [ :index, :show ]
 
   resources :users, only: [ :show ] do

@@ -29,15 +29,21 @@
       <p class="bidders">+3</p>
     </div>
   </div>
-  <div class="form d-none">
-    <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
-      <span class="minus btn round-bordered">-</span>
-      <span class="amount-song">0.0</span>
-      <span class="plus btn round-bordered">+</span>
-      <%= f.input :amount, as: :hidden %>
-      <%= f.submit 'Bid', class: 'btn btn-primary' %>
-    <% end %>
-  </div>
+  <% if current_user != @event.user %>
+    <div class="form d-none">
+      <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
+        <span class="minus btn round-bordered">-</span>
+        <span class="amount-song">0.0</span>
+        <span class="plus btn round-bordered">+</span>
+        <%= f.input :amount, as: :hidden %>
+        <%= f.submit 'Bid', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="delete d-none">
+      <%= link_to 'delete', event_track_path(event_track), method: :delete, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 <div>
 
 
