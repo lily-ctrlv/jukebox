@@ -1,4 +1,5 @@
 class EventTracksController < ApplicationController
+
   def index;
   end
 
