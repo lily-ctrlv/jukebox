@@ -1,4 +1,3 @@
-
 const cards = document.querySelectorAll('.song-card')
 
 cards.forEach((card) => {
@@ -25,14 +24,8 @@ cards.forEach((card) => {
     const count = Number.parseFloat(input.value) + 0.5;
     input.value = count;
     amount.innerHTML = count;
-
   })
 });
-
-
-
-
-
 
 
 // document.querySelectorAll(".song-card").forEach((card) => {
