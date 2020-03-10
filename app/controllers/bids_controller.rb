@@ -13,6 +13,7 @@ class BidsController < ApplicationController
   end
 
   def create
+    @event = Event.find(params[:event_id])
     @event_track = EventTrack.find(params[:event_track_id])
     if !current_user
       redirect_to new_user_session_path
@@ -23,7 +24,7 @@ class BidsController < ApplicationController
       @event_track.save!
       @bid.event_track = @event_track
       if @bid.save!
-        redirect_to event_event_tracks_path
+        redirect_to event_event_track_path(event_id: @event.id, id: @event_track.id)
       else
         # render 'event_tracks/show'
         redirect_to event_event_tracks_path
