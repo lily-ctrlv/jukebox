@@ -24,6 +24,7 @@ class BidsController < ApplicationController
       @event_track.save!
       @bid.event_track = @event_track
       if @bid.save!
+        current_user.update!(balance_cents: current_user.balance_cents - @bid.amount_cents)
         redirect_to event_event_track_path(event_id: @event.id, id: @event_track.id)
       else
         # render 'event_tracks/show'
