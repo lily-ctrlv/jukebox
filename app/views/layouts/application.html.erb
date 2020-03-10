@@ -10,7 +10,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
 
-  <% if params[:controller] == "pages" || (params[:controller] == 'events' && params[:action] == 'show') %>
+  <% if params[:controller] == "pages" || (params[:controller] == 'events' && params[:action] == 'show') || params[:controller] == 'devise' %>
     <body>
   <% else %>
     <body class="padded-body black-background">
