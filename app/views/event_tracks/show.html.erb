@@ -1,4 +1,7 @@
 <% content_for :title, "Playlist" %>
 
+<% @event_tracks.order(:total_bid_amount_cents).each do |event_track|%>
+  <%= render 'shared/song_card', track: event_track.track, event_track: event_track%>
+<% end %>
 
 
