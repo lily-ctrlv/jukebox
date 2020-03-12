@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(_resource)
     current_user.dj ? user_path(current_user.id) : event_path(Event.first)
   end
+
+  def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end

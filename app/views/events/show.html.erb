@@ -1,18 +1,26 @@
 <% content_for :title, "Event" %>
 <div class="container-fluid">
-  <div class="event text-center">
-    <div class="event-infos">
-      <h1><%= @event.venue.name %></h1>
-      <h2 id="event-name"><%= @event.name %></h2>
-      <p id="event-date"><%= @event.start_date_time %></p>
-      <div class="row">
-        <% if Event.first.present? %>
-          <div class="event-actions">
-            <%= link_to "I'm here", event_event_track_path(@event.id), class: "btn btn-primary btn-pink mb-3" %>
-            <p><%= link_to 'Not here?', event_path(@other_events.sample) %></p>
-          </div>
-        <% end %>
-      </div>
+    <div class="event text-center">
+        <div class="event-infos">
+            <h1>
+                <%= @event.venue.name %>
+            </h1>
+            <h2 id="event-name">
+                <%= @event.name %>
+            </h2>
+            <p id="event-date">
+                <%= @event.start_date_time %>
+            </p>
+            <div class="row">
+                <% if Event.first.present? %>
+                <div class="event-actions">
+                    <%= link_to "I'm here", event_event_track_path(@event.id), class: "btn btn-primary btn-pink mb-3" %>
+                    <p>
+                        <%= link_to 'Not here?', event_path(@other_events.sample) %>
+                    </p>
+                </div>
+                <% end %>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

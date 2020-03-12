@@ -1,62 +1,59 @@
 <% content_for :title, "Bid" %>
-
 <div class="bid-song-info d-flex">
-  <%= cl_image_tag @track.cover_photo.key, class:"album-cover" %>
-  <p class="bid-song-title"><%= @track.title %></p>
-  <p class="bid-artist">Song by <%= @track.artist %></p>
+    <%= cl_image_tag @track.cover_photo.key, class:"album-cover" %>
+    <p class="bid-song-title">
+        <%= @track.title %>
+    </p>
+    <p class="bid-artist">Song by
+        <%= @track.artist %>
+    </p>
 </div>
-
 <div class="place-bid d-flex">
-  <a class="balance-incrementer btn-incrementer round-bordered" id="minus" data-offset="-5">-</a>
-  <p id="current-bid">£
-  <form>
-  <input type="number" value="0.05" disabled class="form-control" id="price-input" name="price-cents">
-  </form>
-  </p>
-  <a class="balance-incrementer btn-incrementer round-bordered" id="plus" data-offset="5">+</a>
+    <a class="balance-incrementer btn-incrementer round-bordered" id="minus" data-offset="-5">-</a>
+    <p id="current-bid">£
+        <form>
+            <input type="number" value="0.05" disabled class="form-control" id="price-input" name="price-cents">
+        </form>
+    </p>
+    <a class="balance-incrementer btn-incrementer round-bordered" id="plus" data-offset="5">+</a>
 </div>
-
 <div class="bottom">
-  <form>
-    <input type="submit" value="Bid £0.05" class="btn-pink btn" id="submit">
-  </form>
+    <form>
+        <input type="submit" value="Bid £0.05" class="btn-pink btn" id="submit">
+    </form>
 </div>
-
 <script>
-  const plus_btn        = document.getElementById("plus");
-  const minus_btn       = document.getElementById("minus");
-  const submit          = document.getElementById("submit");
-  const form            = document.querySelector('form');
-  const priceInput  = document.getElementById('price-input');
+const plus_btn = document.getElementById("plus");
+const minus_btn = document.getElementById("minus");
+const submit = document.getElementById("submit");
+const form = document.querySelector('form');
+const priceInput = document.getElementById('price-input');
 
-  const change_value = (action) => {
+const change_value = (action) => {
     console.log(submit)
     if (action === 'plus') {
-      submit.value = `ADD £${((parseInt(submit.dataset.count, 10) + 5) / 100).toFixed(2)}`;
-      submit.dataset.count = parseInt(submit.dataset.count, 10) + 5
+        submit.value = `ADD £${((parseInt(submit.dataset.count, 10) + 5) / 100).toFixed(2)}`;
+        submit.dataset.count = parseInt(submit.dataset.count, 10) + 5
+    } else if (action === 'minus') {
+        submit.value = `ADD £${((parseInt(submit.dataset.count, 10) - 5) / 100).toFixed(2)}`;
+        submit.dataset.count = parseInt(submit.dataset.count, 10) - 5
     }
-    else if (action === 'minus') {
-      submit.value = `ADD £${((parseInt(submit.dataset.count, 10) - 5) / 100).toFixed(2)}`;
-      submit.dataset.count = parseInt(submit.dataset.count, 10) - 5
-    }
-  };
+};
 
-  plus_btn.addEventListener('click', (event) => {
+plus_btn.addEventListener('click', (event) => {
     event.preventDefault();
     change_value('plus');
-  });
+});
 
-  minus_btn.addEventListener('click', (event) => {
+minus_btn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    if (parseInt(submit.dataset.count, 10) > 5  ) {
-      change_value('minus');
+    if (parseInt(submit.dataset.count, 10) > 5) {
+        change_value('minus');
     }
-  });
+});
 
-  form.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
     bid.amount_cents.value = parseInt(user_balance_cents.value, 10) + parseInt(submit.dataset.count, 10)
-  })
-
+})
 </script>
-

@@ -1,0 +1,38 @@
+
+<div class="song-card" data-id=<%= "#{track.id}"%> >
+    <!-- the img tag will be replaced with a rails img tag -->
+    <% if track.cover_photo.attached? %>
+    <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
+    <% else %>
+    <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
+    <% end %>
+    <p class="song-title">
+        <%= track.title %>
+    </p>
+    <p class="song-artist">
+        <%= track.artist %>
+    </p>
+    <!-- this will be coded as to have a random number generated -->
+    <!-- this will be replaced by rails img tag -->
+    <div class="card-right">
+  <% event_track = EventTrack.find_by(track_id: track.id)  %>
+        <p class=" song-bid song-bid<%= "#{track.id}" %>" data-ref=<%= "#{track.id}" %>>£<span class="first-number">
+        <%= event_track.total_bids %></span>.75</p>
+        <span class="bidder-avatars">
+            <img class="avatar-sm small-avatar1" src="https://via.placeholder.com/20x20.png" alt="">
+            <img class="avatar-sm small-avatar2" src="https://via.placeholder.com/20x20.png" alt="">
+            <img class="avatar-sm small-avatar3" src="https://via.placeholder.com/20x20.png" alt="">
+        <!-- <p clas s="bidders">+3</p> -->
+        </span>
+        <p class="bidders">+3</p>
+    </div>
+</div>
+<div class="form d-none">
+  <%= simple_form_for([@event, event_track, @bid]) do |f| %>
+      <%= f.input :amount %>
+      <%= f.submit %>
+  <% end %>
+
+</div>
+<div class="show d-none">
+</div>
