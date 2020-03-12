@@ -1,7 +1,7 @@
 class EventTrack < ApplicationRecord
   belongs_to :event
   belongs_to :track, optional: true
-  has_many :bids
+  has_many :bids, dependent: :destroy
   has_many :users
 
   validates :track_id, uniqueness: { scope: :event_id,

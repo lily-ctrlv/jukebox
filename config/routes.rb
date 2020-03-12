@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :bids, only: [ :index, :show, :new, :create ]
   end
 
+  resources :event_tracks, only: [:destroy]
+
+  resources :tracks, only: [ :index, :show ]
+
   resources :users, only: [ :show ] do
     resources :bids, only: [ :index, :show ]
   end

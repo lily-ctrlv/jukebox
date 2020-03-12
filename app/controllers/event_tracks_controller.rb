@@ -6,6 +6,10 @@ class EventTracksController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_tracks = @event.event_tracks.order(total_bid_amount_cents: :desc)
     @bid = Bid.new
+
+  end
+
+  def show
   end
 
   def new
@@ -37,8 +41,10 @@ class EventTracksController < ApplicationController
   end
 
   def destroy
+    # raise
     if current_user.dj
       @event_track = EventTrack.find(params[:id])
+      @event = @event_track.event
       bids = @event_track.bids
       bids.each do |bid|
         refund = bid.amount_cents
@@ -46,8 +52,9 @@ class EventTracksController < ApplicationController
         user.balance_cents += refund
         user.save!
       end
-      @event_track.bid.destroy
-      @events_track.destroy
+      @event_track.destroy
+      # should be index not show! (arthur)
+      redirect_to event_event_tracks_path(@event)
     end
   end
 

@@ -7,10 +7,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :display_name, presence: true
-  validates :balance, numericality: true
+  # validates :balance, numericality: true
   validates :dj, inclusion: { in: [true, false] }
   validates :avatar, attached: true
-  validates :first_name, :last_name, presence: true
+  # validates :first_name, :last_name, presence: true
 
   monetize :balance_cents
 
