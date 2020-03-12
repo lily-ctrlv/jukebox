@@ -1,0 +1,25 @@
+
+<div class="song-card-container" data-id="<%= track.id %>" >
+  <div class="song-card">
+    <% if track.cover_photo.attached? %>
+      <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
+    <% else %>
+      <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
+    <% end %>
+    <p class="song-title">
+      <%= track.title %>
+    </p>
+    <p class="song-artist">
+      <%= track.artist %>
+    </p>
+  </div>
+  <div class="form d-none">
+    <%= simple_form_for([track, Bid.new]) do |f| %>
+      <span class="minus btn round-bordered">-</span>
+      <span class="amount-song">0.0</span>
+      <span class="plus btn round-bordered">+</span>
+      <%= f.input :amount, as: :hidden %>
+      <%= f.submit 'Bid', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+<div>
