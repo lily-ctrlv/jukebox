@@ -1,32 +1,19 @@
 <% content_for :title, "Search" %>
 <%= render 'shared/navbar_bottom' %>
-
 <div class="container">
-    <%= form_tag tracks_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a track" %>
-    <% end %>
+  <%= form_tag tracks_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a track" %>
+  <% end %>
 </div>
 
 <% @tracks.each do |track| %>
-<%= link_to track_path(track.id) do %>
-<div class="song-card">
-    <!-- the img tag will be replaced with a rails img tag -->
-    <%= cl_image_tag track.cover_photo.key, class:"song-img" %>
-    <!-- <img class="song-img" src="https://via.placeholder.com/60x60.png" alt=""> -->
-    <p class="song-title"><%= track.title %></p>
-    <p class="song-artist"><%= track.artist %></p>
-    <!-- this will be coded as to have a random number generated -->
-    <!-- this will be replaced by rails img tag -->
-<!--     <div class="card-right">
-        <p class="song-bid">£<span class="first-number">8</span>.75</p>
-        <span class="bidder-avatars">
-        <img class="avatar-sm small-avatar1" src="https://via.placeholder.com/20x20.png" alt="">
-        <img class="avatar-sm small-avatar2" src="https://via.placeholder.com/20x20.png" alt="">
-        <img class="avatar-sm small-avatar3" src="https://via.placeholder.com/20x20.png" alt="">
-        </span>
-        <p class="bidders">+3</p> -->
+  <%= render 'shared/track_card', track: track %>
+<!--   <%#= link_to track_path(track.id) do %>
+    <div class="song-card">
+      <%#= cl_image_tag track.cover_photo.key, class:"song-img" %>
+      <p class="song-title"><%= track.title %></p>
+      <p class="song-artist"><%= track.artist %></p>
     </div>
-</div>
-<% end %>
+  <#% end %> -->
 <% end %>
 </body>
