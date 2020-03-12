@@ -1,6 +1,4 @@
 class EventTrack < ApplicationRecord
-
-
   belongs_to :event
   belongs_to :track, optional: true
   has_many :bids
@@ -29,5 +27,4 @@ class EventTrack < ApplicationRecord
     done = true
     save!
   end
-
 end

@@ -10,7 +10,7 @@
             <p>£<%= current_user.balance %></p>
           </div>
           <div class="link-item">
-            <%= link_to event_event_track_path(Event.first, EventTrack.first) do %>
+            <%= link_to event_event_track_path(Event.first, 1) do %>
               <%= image_tag "005-playlist-icon.svg", alt: "alttext", class:"nav-icon"  %>
             <% end %>
             <p>Playlist</p>
