@@ -1,0 +1,4 @@
+meta_product_name: "JukeBox"
+meta_title: "JukeBox - Control Your Clubbing Beats"
+meta_description: "Jukebox is a mobile application which enables clubbers to control the night's playlist."
+meta_image: "jukebox-icon.png" # should exist in `app/assets/images/`
