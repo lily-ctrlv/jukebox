@@ -19,7 +19,8 @@
       <span class="amount-song">0.5</span>
       <span class="plus btn round-bordered">+</span>
       <%= f.input :amount, as: :hidden %>
-      <%= f.submit 'Bid', class: 'btn btn-green' %>
+      <%= f.submit 'Bid', class: 'btn btn-green', id:'submit' %>
+      <p id="warning" class="hidden">You don't have enough to make this bid</p>
     <% end %>
   </div>
 <div>

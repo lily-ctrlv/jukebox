@@ -1,4 +1,4 @@
-const cards = document.querySelectorAll('.song-card')
+const cards = document.querySelectorAll('.song-card');
 
 cards.forEach((card) => {
   card.addEventListener("click", (event) => {
@@ -25,6 +25,9 @@ cards.forEach((card) => {
       input.value = count;
       amount.innerHTML = count;
     }
+    if (input.value <= nav_balance.innerHTML) {
+      balance_warning.classList.add('hidden');
+    }
   })
 
   plus.addEventListener('click', (event) => {
@@ -35,6 +38,17 @@ cards.forEach((card) => {
       amount.innerHTML = count;
     }
   })
+
+  const submit = document.getElementById("submit");
+  const balance_warning = document.getElementById("warning");
+
+  submit.addEventListener('click', (event) => {
+    if (input.value > nav_balance.innerHTML) {
+      event.preventDefault();
+      balance_warning.classList.remove('hidden');
+    }
+  })
+
 });
 
 
