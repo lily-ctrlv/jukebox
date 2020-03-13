@@ -51,7 +51,7 @@
         <div class="add-money-form hidden">
             <%= simple_form_for current_user, remote: true, url: {action: :update, controller: 'registrations'}, :method => :patch do |f| %>
             <%= f.input :balance_cents, as: :hidden %>
-            <div class="balance-incrementer mb-3">
+            <div class="incrementer mb-3">
                 <a class="btn-incrementer round-bordered" id="minus" data-offset="-50">-</a>
                 <div class="flex-grow-1 ml-2 mr-2">
                     <%= f.button :submit, "ADD £0.50", class:"btn btn-green mt-0 mb-0", id:"submit", data: {:"count" => 50 } %>
