@@ -25,15 +25,18 @@
     </div>
   </div>
   <% if current_user != @event.user %>
-    <div class="form d-none">
-      <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
-        <span class="minus btn round-bordered">-</span>
-        <span class="amount-song">0.5</span>
-        <span class="plus btn round-bordered">+</span>
-        <%= f.input :amount, as: :hidden %>
-        <%= f.submit 'Bid', class: 'btn btn-green', id:'submit' %>
-        <p id="warning" class="hidden">You don't have enough to make this bid</p>
-      <% end %>
+    <div class="add-money-form form d-none text-center">
+        <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
+          <%= f.input :amount, as: :hidden %>
+          <div class="incrementer mt-1 mb-1">
+            <span class="minus btn-incrementer round-bordered">-</span>
+            <div class="flex-grow-1 ml-2 mr-2">
+              <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"submit" %>
+            </div>
+            <span class="plus btn-incrementer round-bordered">+</span>
+          </div>
+          <p id="warning" class="hidden">You don't have enough to make this bid</p>
+        <% end %>
     </div>
   <% else %>
     <div class="delete d-none">
@@ -41,6 +44,7 @@
     </div>
   <% end %>
 <div>
+
 
 
 
