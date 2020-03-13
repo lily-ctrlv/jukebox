@@ -16,12 +16,12 @@
       <% event_track = EventTrack.find_by(track_id: track.id)  %>
       <p class=" song-bid song-bid<%= "#{track.id}" %>" data-ref=<%= "#{track.id}" %>>£<span class="first-number">
       <%= event_track.total_bid_amount %></span></p>
-      <span class="bidder-avatars">
+      <!-- <span class="bidder-avatars">
         <img class="avatar-sm small-avatar1" src="https://via.placeholder.com/20x20.png" alt="">
         <img class="avatar-sm small-avatar2" src="https://via.placeholder.com/20x20.png" alt="">
         <img class="avatar-sm small-avatar3" src="https://via.placeholder.com/20x20.png" alt="">
       </span>
-      <p class="bidders">+3</p>
+      <p class="bidders">+3</p> -->
     </div>
   </div>
   <% if current_user != @event.user %>
@@ -31,12 +31,12 @@
         <span class="amount-song">0.0</span>
         <span class="plus btn round-bordered">+</span>
         <%= f.input :amount, as: :hidden %>
-        <%= f.submit 'Bid', class: 'btn btn-primary' %>
+        <%= f.submit 'Bid', class: 'btn btn-green' %>
       <% end %>
     </div>
   <% else %>
     <div class="delete d-none">
-      <%= link_to 'delete', event_track_path(event_track), method: :delete, class: 'btn btn-primary' %>
+      <%= link_to 'delete', event_track_path(event_track), method: :delete, class: 'btn btn-pink' %>
     </div>
   <% end %>
 <div>
