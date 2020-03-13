@@ -25,15 +25,24 @@
             <p id="balance-tag">Balance</p>
         </div>
         <% if current_user.dj %>
+        <%= link_to payout_path do %>
+          <div class="btn btn-pink">
+              MY PLAYLISTS
+          </div>
+        <% end %>
         <div class="btn btn-neutral">
             PAY OUT MY BALANCE
         </div>
-        <div class="btn btn-pink">
-            MY PLAYLISTS
-        </div>
-        <div class="btn btn-green">
-            CREATE NEW PLAYLIST
-        </div>
+        <%= link_to events_path do %>
+          <div class="btn btn-pink">
+              MY PLAYLISTS
+          </div>
+        <% end %>
+        <%= link_to new_event_path do %>
+          <div class="btn btn-green">
+              CREATE NEW PLAYLIST
+          </div>
+        <% end %>
         <% else %>
         <div id="add-money">
             <button class="btn btn-pink" id="add-money-btn">ADD MONEY</button>
@@ -44,8 +53,8 @@
             <%= f.input :balance_cents, as: :hidden %>
             <div class="balance-incrementer mb-3">
                 <a class="btn-incrementer round-bordered" id="minus" data-offset="-50">-</a>
-                <div class="flex-grow-1">
-                    <%= f.button :submit, "ADD £0.50", class:"btn btn-green", id:"submit", data: {:"count" => 50 } %>
+                <div class="flex-grow-1 ml-2 mr-2">
+                    <%= f.button :submit, "ADD £0.50", class:"btn btn-green mt-0 mb-0", id:"submit", data: {:"count" => 50 } %>
                 </div>
                 <a class="btn-incrementer round-bordered" id="plus" data-offset="50">+</a>
             </div>
