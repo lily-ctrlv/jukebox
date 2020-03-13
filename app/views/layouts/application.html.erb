@@ -27,7 +27,12 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %>
     <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
 </head>
-<% if params[:controller] == "pages" || (params[:controller] == 'events' && params[:action] == 'show') || params[:controller] == 'devise' %>
+<% if params[:controller] == "pages" ||
+  (params[:controller] == 'events' && params[:action] == 'show') ||
+  params[:controller] == 'devise/sessions' ||
+  params[:controller] == 'devise/registrations' ||
+  params[:controller] == 'devise/passwords'
+   %>
 
 <body>
     <% else %>
