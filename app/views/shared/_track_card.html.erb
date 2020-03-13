@@ -16,7 +16,7 @@
   <div class="form d-none">
     <%= simple_form_for([track, Bid.new]) do |f| %>
       <span class="minus btn round-bordered">-</span>
-      <span class="amount-song">0.0</span>
+      <span class="amount-song">0.5</span>
       <span class="plus btn round-bordered">+</span>
       <%= f.input :amount, as: :hidden %>
       <%= f.submit 'Bid', class: 'btn btn-green' %>

@@ -7,7 +7,7 @@
             <%= link_to user_path(current_user.id), class:"bottom-nav-link"  do%>
               <%= image_tag "004-user.svg", alt: "alttext",  class:"nav-icon"  %>
             <% end %>
-            <p>£<%= current_user.balance %></p>
+            <p>£<span id="nav-balance"><%= current_user.balance %></span></p>
           </div>
           <div class="link-item">
             <% if current_user.dj %>
