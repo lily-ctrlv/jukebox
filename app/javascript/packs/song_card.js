@@ -17,9 +17,10 @@ cards.forEach((card) => {
   const plus = card.parentNode.querySelector('.plus');
   const input = card.parentNode.querySelector('#bid_amount');
   const amount = card.parentNode.querySelector('.amount-song');
+  input.value = 0.5;
   minus.addEventListener('click', (event) => {
     console.log('i clicked minus')
-    if (Number.parseFloat(input.value) >= 0.5) {
+    if (Number.parseFloat(input.value) >= 1.0) {
       const count = Number.parseFloat(input.value) - 0.5;
       input.value = count;
       amount.innerHTML = count;
@@ -27,10 +28,12 @@ cards.forEach((card) => {
   })
 
   plus.addEventListener('click', (event) => {
-    console.log('i clicked plus')
-    const count = Number.parseFloat(input.value) + 0.5;
-    input.value = count;
-    amount.innerHTML = count;
+    if (Number.parseFloat(input.value) < 5.0) {
+      console.log('i clicked plus')
+      const count = Number.parseFloat(input.value) + 0.5;
+      input.value = count;
+      amount.innerHTML = count;
+    }
   })
 });
 

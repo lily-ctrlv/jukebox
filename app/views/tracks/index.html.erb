@@ -8,12 +8,4 @@
 
 <% @tracks.each do |track| %>
   <%= render 'shared/track_card', track: track %>
-<!--   <%#= link_to track_path(track.id) do %>
-    <div class="song-card">
-      <%#= cl_image_tag track.cover_photo.key, class:"song-img" %>
-      <p class="song-title"><%= track.title %></p>
-      <p class="song-artist"><%= track.artist %></p>
-    </div>
-  <#% end %> -->
 <% end %>
-</body>
