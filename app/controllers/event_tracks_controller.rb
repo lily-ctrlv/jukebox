@@ -37,7 +37,6 @@ class EventTracksController < ApplicationController
     @event_track = EventTrack.find(params[:id])
     @event_track.done = true
     @event_track.save
-
     redirect_to event_event_track_path(@event_track.event, @event_track)
   end
 
