@@ -4,7 +4,7 @@
     <div class="event-infos pt-5">
       <h1><%= @event.venue.name %></h1>
       <h2 id="event-name"><%= @event.name %></h2>
-      <p id="event-date"><%= @event.start_date_time %></p>
+      <p id="event-date"><%= @event.start_date_time.to_s(:custom_datetime) %></p>
     </div>
     <div class="event-actions pb-5">
       <% if Event.first.present? %>
