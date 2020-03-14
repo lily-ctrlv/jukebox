@@ -5,10 +5,13 @@ cards.forEach((card) => {
 
     const form = card.parentNode.querySelector('.form');
     const deletebtn = card.parentNode.querySelector('.delete');
+    const addbtn = card.parentNode.querySelector('.add');
     if (form) {
       form.classList.toggle('d-none');
     } else if (deletebtn) {
       deletebtn.classList.toggle('d-none')
+    } else if (addbtn) {
+      addbtn.classList.toggle('d-none')
     }
 
   });
