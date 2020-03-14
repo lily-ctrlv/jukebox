@@ -1,63 +1,57 @@
-<div class="song-card-container" data-id="<%= track.id %>" >
-  <% if event_track.done %>
+<div class="song-card-container" data-id="<%= track.id %>">
+    <% if event_track.done %>
     <div class="song-card" style="opacity: 0.5">
         <% else %>
         <div class="song-card">
-    <% if track.cover_photo.attached? %>
-      <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
-    <% else %>
-      <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
-    <% end %>
-    <p class="song-title">
-      <%= track.title %>
-    </p>
-    <p class="song-artist">
-      <%= track.artist %>
-    </p>
-    <div class="card-right">
-      <% event_track = EventTrack.find_by(track_id: track.id)  %>
-      <p class=" song-bid song-bid<%= "#{track.id}" %>" data-ref=<%= "#{track.id}" %>>£<span class="first-number">
-    <% unless event_track.done %>      
-      <%= event_track.total_bid_amount %></span></p>
-      <span class="bidder-avatars">
-        <img class="avatar-sm small-avatar1" src="https://via.placeholder.com/20x20.png" alt="">
-        <img class="avatar-sm small-avatar2" src="https://via.placeholder.com/20x20.png" alt="">
-        <img class="avatar-sm small-avatar3" src="https://via.placeholder.com/20x20.png" alt="">
-      </span>
-      <p class="bidders">+3</p>
-    </div>
-    <% end %>
-  </div>
-  <% if current_user != @event.user %>
-    <div class="add-money-form form d-none text-center">
-      <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
-        <%= f.input :amount, as: :hidden %>
-        <div class="incrementer mt-1 mb-1">
-          <span class="minus btn-incrementer round-bordered">-</span>
-          <div class="flex-grow-1 ml-2 mr-2">
-            <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"submit" %>
-          </div>
-          <span class="plus btn-incrementer round-bordered">+</span>
-        </div>
-        <p id="warning" class="hidden">You don't have enough to make this bid</p>
       <% end %>
-    </div>
-  <% else %>
-    <div class="delete d-none text-center">
-      <%= link_to 'REMOVE', event_track_path(event_track), method: :delete, class: 'btn btn-pink' %>
- <%= link_to 'done', event_track_path(event_track), method: :patch, class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-<div>
+            <% if track.cover_photo.attached? %>
+            <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
+            <% else %>
+            <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
+            <% end %>
+            <p class="song-title">
+                <%= track.title %>
+            </p>
+            <p class="song-artist">
+                <%= track.artist %>
+            </p>
+            <div class="card-right">
+                <% event_track = EventTrack.find_by(track_id: track.id)  %>
+                <p class=" song-bid song-bid<%= " #{track.id}" %>" data-ref=
+                    <%= "#{track.id}" %>>
+                    <% unless event_track.done %>
+                    £<span class="first-number">
 
+                        <%= event_track.total_bid_amount %></span></p>
+                <span class="bidder-avatars">
+                    <img class="avatar-sm small-avatar1" src="https://via.placeholder.com/20x20.png" alt="">
+                    <img class="avatar-sm small-avatar2" src="https://via.placeholder.com/20x20.png" alt="">
+                    <img class="avatar-sm small-avatar3" src="https://via.placeholder.com/20x20.png" alt="">
+                </span>
 
+                <p class="bidders">+3</p>
+                    <% end %>
+            </div>
 
-
-<!--
-
-
-<span class="bid-amount">0.25</span>
-
-<span class="minus-sign d-none"></span>
-<span class="plus-sign d-none"></span>
-<span class="bid-button d-none"></span> -->
+        </div>
+        <% if current_user != @event.user %>
+        <div class="add-money-form form d-none text-center">
+            <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
+            <%= f.input :amount, as: :hidden %>
+            <div class="incrementer mt-1 mb-1">
+                <span class="minus btn-incrementer round-bordered">-</span>
+                <div class="flex-grow-1 ml-2 mr-2">
+                    <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"submit" %>
+                </div>
+                <span class="plus btn-incrementer round-bordered">+</span>
+            </div>
+            <p id="warning" class="hidden">You don't have enough to make this bid</p>
+            <% end %>
+        </div>
+        <% else %>
+        <div class="delete d-none text-center">
+            <%= link_to 'REMOVE', event_track_path(event_track), method: :delete, class: 'btn btn-pink' %>
+            <%= link_to 'done', event_track_path(event_track), method: :patch, class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+        <div>
