@@ -50,8 +50,10 @@
         </div>
         <% else %>
         <div class="delete d-none text-center">
-            <%= link_to 'REMOVE', event_track_path(event_track), method: :delete, class: 'btn btn-pink' %>
-            <%= link_to 'done', event_track_path(event_track), method: :patch, class: 'btn btn-primary' %>
+          <div class="d-flex justify-content-center">
+            <%= link_to 'REMOVE', event_track_path(event_track), method: :delete, class: 'btn btn-pink ml-3' %>
+            <%= link_to 'Played', event_track_path(event_track), method: :patch, class: 'btn btn-green ml-3 mr-3' %>
+          </div>
         </div>
         <% end %>
         <div>
