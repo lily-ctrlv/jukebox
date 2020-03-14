@@ -7,8 +7,9 @@ class EventTracksController < ApplicationController
 
   def show
     @event = Event.find(params[:event_id])
-    @event_tracks = @event.event_tracks.where(done: false).order(total_bid_amount_cents: :desc)
-    @done_event_tracks = @event.event_tracks.where(done: true).order(total_bid_amount_cents: :desc)
+    @all_event_tracks = @event.event_tracks.order(done: :asc, total_bid_amount_cents: :desc)
+    # @event_tracks = @event.event_tracks.where(done: false).order(total_bid_amount_cents: :desc)
+    # @done_event_tracks = @event.event_tracks.where(done: true).order(total_bid_amount_cents: :desc)
     @bid = Bid.new
   end
 
