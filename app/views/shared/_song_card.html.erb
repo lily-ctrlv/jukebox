@@ -36,7 +36,7 @@
         </div>
         <% if current_user != @event.user %>
         <div class="add-money-form form d-none text-center">
-            <%= simple_form_for([@event, event_track, Bid.new]) do |f| %>
+            <%= simple_form_for([@event, event_track, Bid.new], remote: true ) do |f| %>
             <%= f.input :amount, as: :hidden %>
             <div class="incrementer mt-1 mb-1">
                 <span class="minus btn-incrementer round-bordered">-</span>
@@ -45,7 +45,7 @@
                 </div>
                 <span class="plus btn-incrementer round-bordered">+</span>
             </div>
-            <p id="warning" class="hidden">You don't have enough to make this bid</p>
+            <p id="warning" class="hidden">You don't have enough money to make this bid</p>
             <% end %>
         </div>
         <% else %>
