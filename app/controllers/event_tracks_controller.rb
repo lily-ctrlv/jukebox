@@ -24,11 +24,8 @@ class EventTracksController < ApplicationController
       @event_track.rank = last_rank + 1
       @event_track.total_bid_amount_cents = 0
     end
-    if @event_track.save
-      redirect_to event_event_track_path(current_user.event_id, 1)
-    else
-      render :new
-    end
+    @event_track.save
+    redirect_to event_event_track_path(current_user.event_id, 1)
   end
 
   def update
