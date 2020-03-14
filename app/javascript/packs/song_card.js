@@ -49,6 +49,15 @@ cards.forEach((card) => {
       if (input.value > nav_balance.innerHTML) {
         event.preventDefault();
         balance_warning.classList.remove('hidden');
+      } else {
+        const form = card.parentNode.querySelector('.form');
+        const total_bid_amount = card.parentNode.querySelector('.first-number');
+        const nav_balance = document.getElementById('nav-balance');
+        form.classList.toggle('d-none');
+        nav_balance.innerText = (nav_balance.innerText - input.value).toFixed(2);
+        console.log(parseFloat(total_bid_amount.innerText))
+        console.log(parseFloat(total_bid_amount.innerText) + parseFloat(input.value))
+        total_bid_amount.innerText = (parseFloat(total_bid_amount.innerText) + parseFloat(input.value)).toFixed(2);
       }
     });
   };
