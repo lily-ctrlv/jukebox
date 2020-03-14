@@ -25,11 +25,11 @@
                 </p>
                 <p class="bidders">
                     <span class="bidder-avatars">
-                        <% event_track.bids.each do |bid| %>
-                        <%= cl_image_tag bid.user.avatar.key, class: 'avatar-sm small-avatar' %>
+                        <% event_track.bids.map(&:user).uniq.each do |user| %>
+                        <%= cl_image_tag user.avatar.key, class: 'avatar-sm small-avatar' %>
                         <% end %>
                     </span>
-                    <span class='pl-4'>+3</span>
+                    <!--   <span class='pl-4'>+3</span> -->
                 </p>
                 <% end %>
             </div>
