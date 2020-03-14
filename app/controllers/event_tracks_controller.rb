@@ -1,10 +1,15 @@
 class EventTracksController < ApplicationController
-  def index;
+  def index
+    @event = Event.find(params[:event_id])
+    @event_tracks = @event.event_tracks.where(done: false).order(total_bid_amount_cents: :desc)
+    @bid = Bid.new
   end
 
   def show
     @event = Event.find(params[:event_id])
-    @event_tracks = @event.event_tracks.order(total_bid_amount_cents: :desc)
+    @all_event_tracks = @event.event_tracks.order(done: :asc, total_bid_amount_cents: :desc)
+    # @event_tracks = @event.event_tracks.where(done: false).order(total_bid_amount_cents: :desc)
+    # @done_event_tracks = @event.event_tracks.where(done: true).order(total_bid_amount_cents: :desc)
     @bid = Bid.new
     if current_user.dj
       current_user.update!(event_id: @event.id)
@@ -30,11 +35,10 @@ class EventTracksController < ApplicationController
 
   def update
     @event_track = EventTrack.find(params[:id])
-    if @event_track.update(event_track_params)
-      redirect_to event_track_path(@event_track)
-    else
-      render :new
-    end
+    @event_track.done = true
+    @event_track.save
+
+    redirect_to event_event_track_path(@event_track.event, @event_track)
   end
 
   def edit
@@ -51,6 +55,9 @@ class EventTracksController < ApplicationController
         user = bid.user
         user.balance_cents += refund
         user.save!
+
+        current_user.balance_cents -= refund
+        current_user.save
       end
       @event_track.destroy
       # should be index not show! (arthur)
