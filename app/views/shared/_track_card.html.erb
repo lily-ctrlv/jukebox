@@ -1,6 +1,6 @@
 
 <div class="song-card-container" data-id="<%= track.id %>" >
-  <div class="song-card">
+  <div class="song-card track_card">
     <% if track.cover_photo.attached? %>
       <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
     <% else %>
@@ -13,6 +13,7 @@
       <%= track.artist %>
     </p>
   </div>
+  <% unless current_user.dj %>
     <div class="add-money-form form d-none text-center">
       <%= simple_form_for([track, Bid.new]) do |f| %>
         <%= f.input :amount, as: :hidden %>
@@ -26,5 +27,23 @@
         <p id="warning" class="hidden">You don't have enough to make this bid</p>
       <% end %>
     </div>
+  <% else %>
+    <div class="add d-none text-center">
+      <%= link_to 'ADD', event_tracks_path(event_track: {track_id: track}), method: :post, class: 'btn btn-pink' %>
+    </div>
+  <% end %>
 <div>
 
+
+<!-- <script>
+  const t_cards = document.querySelectorAll('.track-card');
+
+  t_cards.forEach((t_card) => {
+    t_card.addEventListener("click", (event) => {
+
+      const addbtn = card.parentNode.querySelector('.add');
+      addbtn.classList.toggle('d-none');
+    });
+  });
+</script>
+ -->

@@ -6,6 +6,9 @@ class EventTracksController < ApplicationController
     @event = Event.find(params[:event_id])
     @event_tracks = @event.event_tracks.order(total_bid_amount_cents: :desc)
     @bid = Bid.new
+    if current_user.dj
+      current_user.update!(event_id: @event.id)
+    end
   end
 
   def new
@@ -15,9 +18,14 @@ class EventTracksController < ApplicationController
 
   def create
     @event_track = EventTrack.new(event_track_params)
-    @event_track.user = current_user.id
-    if event_track.save
-      redirect_to event_track_path(@event_track)
+    if current_user.dj
+      @event_track.event = Event.find(current_user.event_id)
+      last_rank = EventTrack.where(event: @event_track.event).count
+      @event_track.rank = last_rank + 1
+      @event_track.total_bid_amount_cents = 0
+    end
+    if @event_track.save
+      redirect_to event_event_track_path(current_user.event_id, 1)
     else
       render :new
     end
@@ -37,7 +45,6 @@ class EventTracksController < ApplicationController
   end
 
   def destroy
-    # raise
     if current_user.dj
       @event_track = EventTrack.find(params[:id])
       @event = @event_track.event
@@ -50,7 +57,7 @@ class EventTracksController < ApplicationController
       end
       @event_track.destroy
       # should be index not show! (arthur)
-      redirect_to event_event_tracks_path(@event)
+      redirect_to event_event_track_path(@event.id, 1)
     end
   end
 
@@ -64,6 +71,6 @@ class EventTracksController < ApplicationController
   private
 
   def event_track_params
-    params.require(:event_track).permit(:user_id, :id, :song, :playlist, :total_bid_amount, :rank)
+    params.require(:event_track).permit(:track_id)
   end
 end
