@@ -4,8 +4,8 @@ class EventTrack < ApplicationRecord
   has_many :bids, dependent: :destroy
   has_many :users
 
-  validates :track_id, uniqueness: { scope: :event_id,
-                                     message: "Track can only be added once to a playlist" }
+  # validates :track_id, uniqueness: { scope: :event_id,
+  #                                    message: "Track can only be added once to a playlist" }
   validates :total_bid_amount, presence: true, numericality: true
   validates :rank, presence: true, numericality: true
 

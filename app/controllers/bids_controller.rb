@@ -36,7 +36,7 @@ class BidsController < ApplicationController
 
   def create_track_bid(bid)
     @track = Track.find(params[:track_id])
-    @event_tracks = EventTrack.where(event_id: current_user.event_id)
+    @event_tracks = EventTrack.where(event_id: current_user.event_id, done: false)
     if check_for_track_in_playlist(@track, @event_tracks)
       @event_track = EventTrack.find_by(track_id: @track.id, event_id: current_user.event_id)
       @event_track.total_bid_amount_cents += bid.amount_cents
