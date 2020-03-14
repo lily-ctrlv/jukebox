@@ -14,6 +14,10 @@
     // border: 1px solid white;
 }
 
+.opacity {
+  opacity: 0.5;
+}
+
 .song-img {
     position: absolute;
     left: 2.67%;
@@ -171,7 +175,7 @@
 }
 
 .btn-primary {
-  background-color: #FF5A5F;
+  background-color: $pink;
   padding: 16px 24px;
   border: none;
 }
