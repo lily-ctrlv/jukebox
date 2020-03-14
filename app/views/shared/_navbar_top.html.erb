@@ -8,7 +8,7 @@
     <div>
       <p class="page-title"><%= yield(:title) %></p>
     </div>
-    <% if yield(:title) == 'Playlist' %>
+    <% if yield(:title) == 'Playlist' && !current_user.dj %>
       <div class="right-icon">
         <%= link_to "<i class='fas fa-times'></i>".html_safe, event_path(Event.first), class:"nav-icon" %>
       </div>

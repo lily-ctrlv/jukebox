@@ -7,13 +7,20 @@
             <%= link_to user_path(current_user.id), class:"bottom-nav-link"  do%>
               <%= image_tag "004-user.svg", alt: "alttext",  class:"nav-icon"  %>
             <% end %>
-            <p>£<%= current_user.balance %></p>
+            <p>£<span id="nav-balance"><%= current_user.balance %></span></p>
           </div>
           <div class="link-item">
-            <%= link_to event_event_track_path(Event.first, 1) do %>
-              <%= image_tag "005-playlist-icon.svg", alt: "alttext", class:"nav-icon"  %>
+            <% if current_user.dj %>
+              <%= link_to events_path do %>
+                <%= image_tag "005-playlist-icon.svg", alt: "alttext", class:"nav-icon"  %>
+              <% end %>
+              <p>My Playlists</p>
+            <% else %>
+              <%= link_to event_event_track_path(Event.first, 1) do %>
+                <%= image_tag "005-playlist-icon.svg", alt: "alttext", class:"nav-icon"  %>
+              <% end %>
+              <p>Playlist</p>
             <% end %>
-            <p>Playlist</p>
           </div>
           <div class="link-item">
             <%= link_to tracks_path, class:"bottom-nav-link" do %>

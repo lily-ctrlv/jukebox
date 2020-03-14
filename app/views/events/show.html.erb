@@ -1,6 +1,6 @@
 <% content_for :title, "Event" %>
 <div class="container-fluid">
-  <div class="event text-center">
+  <div class="event text-center" style="background-image: url(<%= cl_image_path(@event.event_image.key) %>), linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));">
     <div class="event-infos">
       <h1><%= @event.venue.name %></h1>
       <h2 id="event-name"><%= @event.name %></h2>
@@ -13,3 +13,5 @@
       <% end %>
     </div>
 </div>
+
+<!-- if event in past then greyscale -->

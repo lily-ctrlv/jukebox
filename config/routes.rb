@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # get 'event_tracks/:id/mark_as_done'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :events, only: [ :index, :show, :new ] do
-    resources :event_tracks, only: [:index, :show] do
+  resources :events, only: [ :index, :show, :new, :create ] do
+    resources :event_tracks, only: [:index, :show ] do
       resources :bids, only: [ :index, :show, :new, :create ]
     end
   end
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :bids, only: [ :index, :show, :new, :create ]
   end
 
-  resources :event_tracks, only: [ :destroy, :update ]
+  resources :event_tracks, only: [ :new, :create, :update, :destroy ]
 
   resources :tracks, only: [ :index, :show ]
 

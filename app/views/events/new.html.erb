@@ -1,0 +1,15 @@
+<% content_for :title, "Create Event Playlist" %>
+<div class="container">
+  <div class="center-screen-navs">
+    <div class="ext-center playlist-form">
+      <%= simple_form_for(@event) do |f| %>
+        <%= f.input :name, label: 'Event name' %>
+        <%= f.association :venue, collection: @venues, as: :select %>
+        <%= f.input :start_date_time %>
+        <%= f.input :end_date_time %>
+        <%= f.input :event_image %>
+        <%= f.button :submit, 'CREATE PLAYLIST', class: "btn btn-pink" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :title, "My Playlists" %>
+<% @events.each do |event| %>
+  <%= link_to event_event_track_path(event_id: event.id, id: 1) do %>
+    <% if event.end_date_time < Time.new %>
+      <div class="card-category card-category-grey" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(event.event_image.key) %>);">
+    <% else %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(event.event_image.key) %>);">
+    <% end %>
+      <h3><%= event.venue.name %></h3>
+      <h5><%= event.name %></h5>
+      <p><%= event.start_date_time %></p>
+    </div>
+  <% end %>
+<% end %>
+
+
