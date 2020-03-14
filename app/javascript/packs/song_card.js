@@ -16,38 +16,39 @@ cards.forEach((card) => {
   const minus = card.parentNode.querySelector('.minus');
   const plus = card.parentNode.querySelector('.plus');
   const input = card.parentNode.querySelector('#bid_amount');
-  input.value = 0.5;
-  minus.addEventListener('click', (event) => {
-    console.log('i clicked minus')
-    if (Number.parseFloat(input.value) >= 1.0) {
-      const count = Number.parseFloat(input.value) - 0.5;
-      input.value = count;
-      submit.value = `BID £${count.toFixed(2)}`;
-    }
-    if (input.value <= nav_balance.innerHTML) {
-      balance_warning.classList.add('hidden');
-    }
-  })
+  if (input) {
+    input.value = 0.5;
+    minus.addEventListener('click', (event) => {
+      console.log('i clicked minus')
+      if (Number.parseFloat(input.value) >= 1.0) {
+        const count = Number.parseFloat(input.value) - 0.5;
+        input.value = count;
+        submit.value = `BID £${count.toFixed(2)}`;
+      }
+      if (input.value <= nav_balance.innerHTML) {
+        balance_warning.classList.add('hidden');
+      }
+    });
 
-  plus.addEventListener('click', (event) => {
-    if (Number.parseFloat(input.value) < 5.0) {
-      console.log('i clicked plus')
-      const count = Number.parseFloat(input.value) + 0.5;
-      input.value = count;
-      submit.value = `BID £${count.toFixed(2)}`;
-    }
-  })
+    plus.addEventListener('click', (event) => {
+      if (Number.parseFloat(input.value) < 5.0) {
+        console.log('i clicked plus')
+        const count = Number.parseFloat(input.value) + 0.5;
+        input.value = count;
+        submit.value = `BID £${count.toFixed(2)}`;
+      }
+    });
 
-  const submit = document.getElementById("submit");
-  const balance_warning = document.getElementById("warning");
+    const submit = card.parentNode.querySelector("#submit");
+    const balance_warning = card.parentNode.querySelector("#warning");
 
-  submit.addEventListener('click', (event) => {
-    if (input.value > nav_balance.innerHTML) {
-      event.preventDefault();
-      balance_warning.classList.remove('hidden');
-    }
-  })
-
+    submit.addEventListener('click', (event) => {
+      if (input.value > nav_balance.innerHTML) {
+        event.preventDefault();
+        balance_warning.classList.remove('hidden');
+      }
+    });
+  };
 });
 
 
