@@ -60,6 +60,7 @@ cards.forEach((card) => {
           const song_title = card.parentNode.querySelector('.song-title');
           const song_artist = card.parentNode.querySelector('.song-artist');
           form.classList.toggle('d-none');
+          card.parentNode.style.order = card.parentNode.style.order - (parseFloat(input.value) * 100);
           if (total_bid_amount) {
             nav_balance.innerText = (nav_balance.innerText - input.value).toFixed(2);
             total_bid_amount.innerText = (parseFloat(total_bid_amount.innerText) + parseFloat(input.value)).toFixed(2);

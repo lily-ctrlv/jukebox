@@ -1,4 +1,11 @@
-<div class="song-card-container" data-id="<%= track.id %>">
+<div class="song-card-container" data-id="<%= track.id %>"
+  style="order:
+  <% if event_track.done %>
+  -<%= 0 %><%= event_track.total_bid_amount_cents %>
+  <% else %>
+  -<%= 1 %><%= event_track.total_bid_amount_cents %>
+  <% end %>">
+
 
   <% if event_track.done %>
     <div class="song-card opacity">
