@@ -23,6 +23,7 @@ class BidsController < ApplicationController
     else
       create_track_bid(@bid)
     end
+    sleep(3.0)
     redirect_to event_event_track_path(event_id: current_user.event_id, id: 1)
   end
 
@@ -38,7 +39,7 @@ class BidsController < ApplicationController
     @track = Track.find(params[:track_id])
     @event_tracks = EventTrack.where(event_id: current_user.event_id, done: false)
     if check_for_track_in_playlist(@track, @event_tracks)
-      @event_track = EventTrack.find_by(track_id: @track.id, event_id: current_user.event_id)
+      @event_track = EventTrack.find_by(track_id: @track.id, event_id: current_user.event_id, done: false)
       @event_track.total_bid_amount_cents += bid.amount_cents
       @event_track.save!
       bid.event_track_id = @event_track.id

@@ -1,3 +1,5 @@
+import { initSweetalert } from '../plugins/init_sweetalert';
+
 const cards = document.querySelectorAll('.song-card');
 
 cards.forEach((card) => {
@@ -6,162 +8,72 @@ cards.forEach((card) => {
     const form = card.parentNode.querySelector('.form');
     const deletebtn = card.parentNode.querySelector('.delete');
     const addbtn = card.parentNode.querySelector('.add');
+
     if (form) {
       form.classList.toggle('d-none');
     } else if (deletebtn) {
-      deletebtn.classList.toggle('d-none')
+      deletebtn.classList.toggle('d-none');
     } else if (addbtn) {
-      addbtn.classList.toggle('d-none')
-    }
-
+      addbtn.classList.toggle('d-none');
+    };
   });
 
   const minus = card.parentNode.querySelector('.minus');
   const plus = card.parentNode.querySelector('.plus');
   const input = card.parentNode.querySelector('#bid_amount');
+
   if (input) {
     input.value = 0.5;
+
     minus.addEventListener('click', (event) => {
-      console.log('i clicked minus')
       if (Number.parseFloat(input.value) >= 1.0) {
         const count = Number.parseFloat(input.value) - 0.5;
         input.value = count;
-        submit.value = `BID £${count.toFixed(2)}`;
-      }
-      if (input.value <= nav_balance.innerHTML) {
-        balance_warning.classList.add('hidden');
-      }
+        bid_submit.value = `BID £${count.toFixed(2)}`;
+      };
     });
 
     plus.addEventListener('click', (event) => {
       if (Number.parseFloat(input.value) < 5.0) {
-        console.log('i clicked plus')
         const count = Number.parseFloat(input.value) + 0.5;
         input.value = count;
-        submit.value = `BID £${count.toFixed(2)}`;
-      }
+        bid_submit.value = `BID £${count.toFixed(2)}`;
+      };
     });
 
-    const submit = card.parentNode.querySelector("#submit");
-    const balance_warning = card.parentNode.querySelector("#warning");
-
-    submit.addEventListener('click', (event) => {
-      if (input.value > nav_balance.innerHTML) {
-        event.preventDefault();
-        balance_warning.classList.remove('hidden');
-      } else {
-        const form = card.parentNode.querySelector('.form');
-        const total_bid_amount = card.parentNode.querySelector('.first-number');
-        const nav_balance = document.getElementById('nav-balance');
-        form.classList.toggle('d-none');
-        nav_balance.innerText = (nav_balance.innerText - input.value).toFixed(2);
-        console.log(parseFloat(total_bid_amount.innerText))
-        console.log(parseFloat(total_bid_amount.innerText) + parseFloat(input.value))
-        total_bid_amount.innerText = (parseFloat(total_bid_amount.innerText) + parseFloat(input.value)).toFixed(2);
-      }
-    });
+    const bid_submit = card.parentNode.querySelector("#bid-submit");
+    if (bid_submit) {
+      bid_submit.addEventListener('click', (event) => {
+        if (input.value > nav_balance.innerHTML) {
+          event.preventDefault();
+          swal({
+            title: "Top up your balance!",
+            text: `Sorry, you do not have enough funds to place this bid. You can top up your balance from your account page.`,
+            icon: "error",
+            buttons: false,
+            timer: 4000
+          });
+        } else {
+          const form = card.parentNode.querySelector('.form');
+          const total_bid_amount = card.parentNode.querySelector('.first-number');
+          const nav_balance = document.getElementById('nav-balance');
+          const song_title = card.parentNode.querySelector('.song-title');
+          const song_artist = card.parentNode.querySelector('.song-artist');
+          form.classList.toggle('d-none');
+          if (total_bid_amount) {
+            nav_balance.innerText = (nav_balance.innerText - input.value).toFixed(2);
+            total_bid_amount.innerText = (parseFloat(total_bid_amount.innerText) + parseFloat(input.value)).toFixed(2);
+          };
+          swal({
+            title: "Bid placed!",
+            text: `Bid: £${parseFloat(input.value).toFixed(2)}
+                   Song: ${song_title.innerText} by ${song_artist.innerText}`,
+            icon: "success",
+            buttons: false,
+            timer: 3000
+          });
+        };
+      });
+    };
   };
 });
-
-
-// document.querySelectorAll(".song-card").forEach((card) => {
-//   card.addEventListener("click", (event) => {
-//     const id = event.currentTarget.dataset.id
-
-//     const element = event.currentTarget.nextElementSibling
-//     if (element.classList.contains("d-none")) {
-//       element.classList.remove("d-none");
-//       element.insertAdjacentHTML(
-//         "beforeend",
-//         `<div class="actions">
-//             <a class="btn round-bordered incrementer inc${id}" data-offset="-0.5">-</a>
-//             <span id="counter${id}" data-count="0">0</span>
-//             <a href="#" class="btn round-bordered incrementer inc${id}" data-offset="0.5">+</a>
-//         </div>
-//         <form action >
-//           <input type="hidden" value='' />
-//           <input type="submit" value="Bid" class="btn btn-primary submit${id}" id="submit">
-//         </form>`
-//       );
-
-//       document.querySelectorAll(`.inc${id}`).forEach(element => {
-//         element.addEventListener("click", (event) => {
-//           const offset = event.currentTarget.dataset.offset;
-//           const counter = document.getElementById(`counter${id}`);
-//           const count = Number.parseFloat(counter.dataset.count) + Number.parseFloat(offset);
-//           console.log(count)
-//           if (count >= 0) {
-//             counter.dataset.count = count;
-//             counter.innerText = count
-//           } else {
-//             event.preventDefault()
-//           }
-//         })
-//       })
-//     } else {
-//       event.currentTarget.nextElementSibling.classList.add("d-none");
-//       event.currentTarget.nextElementSibling.innerHTML = "";
-//     }
-//   });
-// });
-//
-// document.querySelectorAll(`.submit${id}`).forEach(element => {
-//   element.addEventListener("click", (event) => {
-//     const current_bid = document.querySelector(`.song-bid${id}`).dataset.count;
-//     const new_bid = document.getElementById(`counter${id}`).dataset.count;
-//     const total = new_bid + current_bid;
-//     console.log(total)
-//   });
-// });
-
-
-
-
-
-  //       offsetPlus.addEventListener("click", bid(event));
-
-
-
-
-
-
-  // const new_bid = document.getElementById(`counter${id}`).dataset.count;
-  // const current_bid = document.querySelector(`.song-bid${id}`).dataset.count;
-  // const total = new_bid + current_bid;
-
-  // console.log(total)
-
-  // const form = document.querySelector("<div class=""></div>bid");
-  // form.addEventListener("submit", update);
-
-//   const update = function(){
-
-//     Rails.ajax({
-//       url: "/event_tracks",
-//       type: "put",
-//       data: "update",
-//       success: function(data) {
-
-
-//       }
-
-
-
-
-//       // error: function(data) {}
-//     })
-
-// };
-
-
-
-
-
-
-
-  // const updateFormOnButtonClick = (button) => {
-  //   button.addEventListener('click', updateForm);
-  // };
-
-  // const buttons = document.querySelectorAll('.incrementer');
-  // buttons.forEach(updateFormOnButtonClick);

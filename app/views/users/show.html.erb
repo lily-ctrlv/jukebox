@@ -20,8 +20,7 @@
             </p>
         </div>
         <div class="account-balance">
-            <p id="balance-amount">£<span id="balance-figure">
-                    <%= current_user.balance %><span></p>
+            <p id="balance-amount">£<span id="balance-figure"><%= current_user.balance %><span></p>
             <p id="balance-tag">Balance</p>
         </div>
         <% if current_user.dj %>
@@ -40,7 +39,7 @@
         <% end %>
         <% else %>
         <div id="add-money">
-            <button class="btn btn-pink" id="add-money-btn">ADD MONEY</button>
+            <button class="btn btn-pink" id="add-money-btn" style="margin-bottom: 33px;">ADD MONEY</button>
         </div>
         <% end %>
         <div class="add-money-form hidden">
@@ -49,7 +48,7 @@
             <div class="incrementer mb-3">
                 <a class="btn-incrementer round-bordered" id="minus" data-offset="-50">-</a>
                 <div class="flex-grow-1 ml-2 mr-2">
-                    <%= f.button :submit, "ADD £0.50", class:"btn btn-green mt-0 mb-0", id:"submit", data: {:"count" => 50 } %>
+                    <%= f.button :submit, "ADD £0.50", class:"btn btn-green mt-0 mb-0", id:"submit-add-money", data: {:"count" => 50 } %>
                 </div>
                 <a class="btn-incrementer round-bordered" id="plus" data-offset="50">+</a>
             </div>
@@ -76,56 +75,4 @@
     </div>
     <% end %>
 </div>
-<script>
-const plus_btn = document.getElementById("plus");
-const minus_btn = document.getElementById("minus");
-const submit = document.getElementById("submit");
-const form = document.querySelector('form');
-const balance_figure = document.getElementById('balance-figure');
-const add_money_section = document.getElementById("add-money");
-const add_money_btn = document.getElementById("add-money-btn");
-const add_money_form = document.querySelector(".add-money-form");
-const cancel_add_money_form = document.getElementById("cancel-add");
-const nav_balance = document.getElementById("nav-balance");
 
-
-const change_value = (action) => {
-    if (action === 'plus') {
-        submit.value = `ADD £${((parseInt(submit.dataset.count, 10) + 50) / 100).toFixed(2)}`;
-        submit.dataset.count = parseInt(submit.dataset.count, 10) + 50
-    } else if (action === 'minus') {
-        submit.value = `ADD £${((parseInt(submit.dataset.count, 10) - 50) / 100).toFixed(2)}`;
-        submit.dataset.count = parseInt(submit.dataset.count, 10) - 50
-    }
-};
-
-add_money_btn.addEventListener('click', () => {
-    add_money_btn.classList.toggle('hidden');
-    add_money_form.classList.toggle('hidden');
-})
-
-cancel_add_money_form.addEventListener('click', () => {
-    add_money_form.classList.toggle('hidden');
-    add_money_btn.classList.toggle('hidden');
-})
-
-plus_btn.addEventListener('click', (event) => {
-    event.preventDefault();
-    change_value('plus');
-});
-
-minus_btn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    if (parseInt(submit.dataset.count, 10) > 50) {
-        change_value('minus');
-    }
-});
-
-
-form.addEventListener('submit', (event) => {
-    user_balance_cents.value = parseInt(user_balance_cents.value, 10) + parseInt(submit.dataset.count, 10)
-    balance_figure.innerText = (user_balance_cents.value / 100).toFixed(2)
-    nav_balance.innerText = (parseInt(user_balance_cents.value, 10) / 100).toFixed(2)
-})
-</script>
