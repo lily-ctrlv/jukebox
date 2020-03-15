@@ -20,11 +20,10 @@
         <div class="incrementer mt-1 mb-1">
           <span class="minus btn-incrementer round-bordered">-</span>
           <div class="flex-grow-1 ml-2 mr-2">
-            <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"submit" %>
+            <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"bid-submit" %>
           </div>
           <span class="plus btn-incrementer round-bordered">+</span>
         </div>
-        <p id="warning" class="hidden">You don't have enough to make this bid</p>
       <% end %>
     </div>
   <% else %>
@@ -33,17 +32,3 @@
     </div>
   <% end %>
 <div>
-
-
-<!-- <script>
-  const t_cards = document.querySelectorAll('.track-card');
-
-  t_cards.forEach((t_card) => {
-    t_card.addEventListener("click", (event) => {
-
-      const addbtn = card.parentNode.querySelector('.add');
-      addbtn.classList.toggle('d-none');
-    });
-  });
-</script>
- -->
