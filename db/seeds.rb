@@ -121,6 +121,37 @@ high_hopes = Track.new(
   album: 'In A Perfect World (Deluxe)')
 high_hopes.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/4/42/Kodaline_-_In_A_Perfect_World.jpg'), filename: "high_hopes_cover.jpg", content_type: "image/jpg")
 high_hopes.save!
+i_like_it = Track.new(
+  title: 'I Like It',
+  artist: 'Cardi B (ft. Bad Bunny & J Balvin)',
+  album: 'Invastion of Privacy')
+i_like_it.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Cardi_B%2C_Bad_Bunny_and_J_Balvin_-_I_Like_It_%28Single_Cover%29.png/220px-Cardi_B%2C_Bad_Bunny_and_J_Balvin_-_I_Like_It_%28Single_Cover%29.png'), filename: "i_like_it_cover.jpg", content_type: "image/jpg")
+i_like_it.save!
+say_so = Track.new(
+  title: 'Say So',
+  artist: 'Doja Cat',
+  album: 'Hot Pink')
+say_so.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p082lysn.jpg'), filename: "say_so_cover.jpg", content_type: "image/jpg")
+say_so.save!
+intentions = Track.new(
+  title: 'Intentions',
+  artist: 'Justin Bieber (ft. Quavo)',
+  album: 'Intentions')
+intentions.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p083c7hp.jpg'), filename: "intentions_cover.jpg", content_type: "image/jpg")
+intentions.save!
+lonely = Track.new(
+  title: 'Lonely',
+  artist: 'Joel Corry',
+  album: 'Lonely (Basement Mix)')
+lonely.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p082lxwz.jpg'), filename: "lonely_cover.jpg", content_type: "image/jpg")
+lonely.save!
+my_oh_my = Track.new(
+  title: 'My Oh My',
+  artist: 'Camila Cabello (feat. DaBaby)',
+  album: 'Romance')
+my_oh_my.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p07zg4zy.jpg'), filename: "my_oh_my_cover.jpg", content_type: "image/jpg")
+my_oh_my.save!
+
 puts 'Tracks created!'
 
 puts 'Creating venues...'
@@ -130,7 +161,17 @@ pryzm = Venue.create!(
 queen_of_hoxton = Venue.create!(
   name: 'Queen of Hoxton',
   postcode: 'EC2A 3JX')
+tiger_tiger = Venue.create!(
+  name: 'Tiger Tiger',
+  postcode: 'SW1Y 4SP')
+heaven = Venue.create!(
+  name: 'Heaven',
+  postcode: 'WC2N 6NG')
+xoyo = Venue.create!(
+  name: 'XOYO',
+  postcode: 'EC2A 4AP')
 puts 'Venues created!'
+
 
 date_time = Time.new
 start_date_time = Time.new(date_time.year, date_time.month, date_time.day, date_time.hour, 0, 0)
@@ -174,6 +215,16 @@ shake_it_off_event_track = EventTrack.create!(
   event_id: fomo_friday.id,
   total_bid_amount: 0,
   rank: 3)
+say_so_event_track = EventTrack.create!(
+  track_id: say_so.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 4)
+lonely_event_track = EventTrack.create!(
+  track_id: lonely.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 5)
 puts 'Created event tracks!'
 
 puts 'Creating bids...'
@@ -185,7 +236,7 @@ Bid.create!(
 Bid.create!(
   amount_cents: 25,
   event_track_id: worship_event_track.id,
-  user_id: james.id
+  user_id: jamie.id
   )
 Bid.create!(
   amount_cents: 10,
@@ -207,6 +258,16 @@ Bid.create!(
   event_track_id: shake_it_off_event_track.id,
   user_id: jamie.id
   )
+Bid.create!(
+  amount_cents: 40,
+  event_track_id: say_so_event_track.id,
+  user_id: lili.id
+  )
+Bid.create!(
+  amount_cents: 30,
+  event_track_id: lonely_event_track.id,
+  user_id: james.id
+  )
 puts 'Created bids!'
 
 puts 'Tallying total bids...'
@@ -221,4 +282,12 @@ worship_event_track.update!(total_bid_amount: total_worship_bids)
 shake_it_off_bids = Bid.where(event_track_id: shake_it_off_event_track.id)
 total_shake_it_off_bids = shake_it_off_bids.sum { |b| b.amount }
 shake_it_off_event_track.update!(total_bid_amount: total_shake_it_off_bids)
+
+say_so_bids = Bid.where(event_track_id: say_so_event_track.id)
+total_say_so_bids = say_so_bids.sum { |b| b.amount }
+say_so_event_track.update!(total_bid_amount: total_say_so_bids)
+
+lonely_bids = Bid.where(event_track_id: lonely_event_track.id)
+total_lonely_bids = lonely_bids.sum { |b| b.amount }
+lonely_event_track.update!(total_bid_amount: total_lonely_bids)
 puts 'Total bids tallied!'
