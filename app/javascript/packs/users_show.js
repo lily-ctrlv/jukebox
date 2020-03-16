@@ -52,17 +52,20 @@ if (minus_btn) {
   });
 };
 
-form.addEventListener('submit', (event) => {
-  user_balance_cents.value = parseInt(user_balance_cents.value, 10) + parseInt(submit.dataset.count, 10)
-  balance_figure.innerText = (user_balance_cents.value / 100).toFixed(2)
-  nav_balance.innerText = (parseInt(user_balance_cents.value, 10) / 100).toFixed(2)
-  add_money_btn.classList.toggle('hidden');
-  add_money_form.classList.toggle('hidden');
-  swal({
-    title: "Balance updated!",
-    text: `£${(parseInt(submit.dataset.count, 10) / 100).toFixed(2)} has been added to your balance.`,
-    icon: "success",
-    buttons: false,
-    timer: 2500
+if (form){
+  form.addEventListener('submit', (event) => {
+    user_balance_cents.value = parseInt(user_balance_cents.value, 10) + parseInt(submit.dataset.count, 10)
+    balance_figure.innerText = (user_balance_cents.value / 100).toFixed(2)
+    nav_balance.innerText = (parseInt(user_balance_cents.value, 10) / 100).toFixed(2)
+    add_money_btn.classList.toggle('hidden');
+    add_money_form.classList.toggle('hidden');
+    swal({
+      title: "Balance updated!",
+      text: `£${(parseInt(submit.dataset.count, 10) / 100).toFixed(2)} has been added to your balance.`,
+      icon: "success",
+      buttons: false,
+      timer: 2500
+    });
   });
-});
+}
+
