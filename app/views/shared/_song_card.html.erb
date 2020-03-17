@@ -1,64 +1,64 @@
-<div class="song-card-container" data-id="<%= track.id %>"
-  style="order:
+<div class="song-card-container" data-id="<%= track.id %>" style="order:
   <% if event_track.done %>
   -<%= 0 %><%= event_track.total_bid_amount_cents %>
   <% else %>
   -<%= 1 %><%= event_track.total_bid_amount_cents %>
-  <% end %>">
-
+  <% end %>
+">
 
   <% if event_track.done %>
-    <div class="song-card opacity">
+  <div class="song-card opacity d-flex flex-row">
   <% else %>
-    <div class="song-card">
+  <div class="song-card d-flex flex-row">
   <% end %>
 
-  <% if track.cover_photo.attached? %>
+    <% if track.cover_photo.attached? %>
     <%= cl_image_tag track.cover_photo.key, height: 180, width: 180, crop: :fill, class: 'song-img' %>
-  <% else %>
+    <% else %>
     <%= image_tag "glittery.jpg", height: 180, width: 180, class: 'song-img'%>
-  <% end %>
+    <% end %>
 
-    <p class="song-title">
-      <%= track.title %>
-      <% if event_track.done %>
+    <div class="song-details align-self-center">
+      <p class="song-title"><%= track.title %>
+        <% if event_track.done %>
         <span class="badge badge-secondary pl-2 pr-2">Played</span>
-      <% end %>
-    </p>
-    <p class="song-artist"><%= track.artist %></p>
-    <div class="card-right">
+        <% end %>
+      </p>
+      <p class="song-artist"><%= track.artist %></p>
+    </div>
+    <div class="bidding-details ml-auto align-self-center">
       <% unless event_track.done %>
-        <p class=" song-bid song-bid<%= " #{track.id}" %>" data-ref=<%= "#{track.id}" %>>
-        £<span class="first-number"><%= event_track.total_bid_amount %></span></p>
-        <p class="bidders">
-          <span class="bidder-avatars">
-            <% event_track.bids.map(&:user).uniq.each do |user| %>
-            <%= cl_image_tag user.avatar.key, class: 'avatar-sm small-avatar' %>
-            <% end %>
-          </span>
-        </p>
+      <p class=" song-bid song-bid<%= " #{track.id}" %>" data-ref=<%= "#{track.id}" %>>
+      £<span class="first-number"><%= event_track.total_bid_amount %></span></p>
+      <p class="bidders">
+        <span class="bidder-avatars">
+          <% event_track.bids.map(&:user).uniq.each do |user| %>
+          <%= cl_image_tag user.avatar.key, class: 'avatar-sm small-avatar' %>
+          <% end %>
+        </span>
+      </p>
       <% end %>
     </div>
-  </div>
-  <% if current_user == @event.user && event_track.done == false %>
+    <% if current_user == @event.user && event_track.done == false %>
     <div class="delete d-none text-center">
       <div class="d-flex justify-content-center">
         <%= link_to 'REMOVE', event_track_path(event_track), method: :delete, class: 'btn btn-pink ml-3' %>
         <%= link_to 'Played', event_track_path(event_track), method: :patch, class: 'btn btn-green ml-3 mr-3' %>
       </div>
     </div>
-  <% elsif event_track.done == false %>
+    <% elsif event_track.done == false %>
     <div class="add-money-form form d-none text-center">
-        <%= simple_form_for([@event, event_track, Bid.new], remote: true ) do |f| %>
-        <%= f.input :amount, as: :hidden %>
-        <div class="incrementer mt-1 mb-1">
-            <span class="minus btn-incrementer round-bordered">-</span>
-            <div class="flex-grow-1 ml-2 mr-2">
-                <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"bid-submit" %>
-            </div>
-            <span class="plus btn-incrementer round-bordered">+</span>
+      <%= simple_form_for([@event, event_track, Bid.new], remote: true ) do |f| %>
+      <%= f.input :amount, as: :hidden %>
+      <div class="incrementer mt-1 mb-1">
+        <span class="minus btn-incrementer round-bordered">-</span>
+        <div class="flex-grow-1 ml-2 mr-2">
+          <%= f.button :submit, "BID £0.50", class:"btn btn-green mt-0 mb-0", id:"bid-submit" %>
         </div>
-        <% end %>
+        <span class="plus btn-incrementer round-bordered">+</span>
+      </div>
+      <% end %>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
