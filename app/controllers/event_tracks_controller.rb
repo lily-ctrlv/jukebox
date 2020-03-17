@@ -7,9 +7,7 @@ class EventTracksController < ApplicationController
 
   def show
     @event = Event.find(params[:event_id])
-    @all_event_tracks = @event.event_tracks.order(done: :asc, total_bid_amount_cents: :desc)
-    # @event_tracks = @event.event_tracks.where(done: false).order(total_bid_amount_cents: :desc)
-    # @done_event_tracks = @event.event_tracks.where(done: true).order(total_bid_amount_cents: :desc)
+    @all_event_tracks = @event.event_tracks.order(done: :asc, date_time_played: :desc)
     @bid = Bid.new
     if current_user.dj
       current_user.update!(event_id: @event.id)
@@ -36,6 +34,7 @@ class EventTracksController < ApplicationController
   def update
     @event_track = EventTrack.find(params[:id])
     @event_track.done = true
+    @event_track.date_time_played = Time.new
     @event_track.save
     redirect_to event_event_track_path(@event_track.event, @event_track)
   end
@@ -61,13 +60,6 @@ class EventTracksController < ApplicationController
       @event_track.destroy
       # should be index not show! (arthur)
       redirect_to event_event_track_path(@event.id, 1)
-    end
-  end
-
-  def mark_as_done
-    if current_user.dj
-      @event_track = EventTrack.find(params[:id])
-      @event_track.mark_as_done!
     end
   end
 
