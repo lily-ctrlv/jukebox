@@ -22,9 +22,4 @@ class EventTrack < ApplicationRecord
   def done?
     done
   end
-
-  def mark_as_done!
-    done = true
-    save!
-  end
 end
