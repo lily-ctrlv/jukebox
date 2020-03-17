@@ -61,14 +61,15 @@
         <p>Your Recent Bids</p>
         <% @recent_10_bids.each do |bid| %>
         <div class="row">
-            <div class="song-card">
-                <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
-                <span class="song-title">
-                    <%= Track.find(bid.event_track.track_id).title %></span>
-                <span class="song-artist">
-                    <%= Track.find(bid.event_track.track_id).artist %></span>
-                <span class="song-bid">£
-                    <%= bid.amount %></span>
+            <div class="song-card d-flex flex-row">
+              <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
+              <div class="song-details align-self-center">
+                <p class="song-title"><%= Track.find(bid.event_track.track_id).title %></p>
+                <p class="song-artist"><%= Track.find(bid.event_track.track_id).artist %></p>
+              </div>
+              <div class="bidding-details ml-auto align-self-center">
+                <span class="song-bid">£<%= bid.amount %></span>
+              </div>
             </div>
         </div>
         <% end %>
