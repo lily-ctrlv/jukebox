@@ -9,7 +9,7 @@ require 'open-uri'
 
 puts 'Creating users...'
 james = User.new(
-  email: 'james@clubbers.org',
+  email: 'james@gmail.com',
   password: '123456',
   first_name: 'James',
   last_name: 'Trinder',
@@ -19,7 +19,7 @@ james = User.new(
 james.avatar.attach(io: open('https://avatars3.githubusercontent.com/u/39556334?s=460&v=4'), filename: "james_face.jpg", content_type: "image/jpg")
 james.save!
 eric = User.new(
-  email: 'eric@discjockeys.org',
+  email: 'eric@gmail.com',
   password: '123456',
   first_name: 'Eric',
   last_name: 'Burger',
@@ -29,7 +29,7 @@ eric = User.new(
 eric.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/25728050?s=460&v=4'), filename: "eric_face.jpg", content_type: "image/jpg")
 eric.save!
 lili = User.new(
-  email: 'lili@clubbers.org',
+  email: 'lili@gmail.com',
   password: '123456',
   first_name: 'Liliana',
   last_name: 'Martins Cosentino',
@@ -39,7 +39,7 @@ lili = User.new(
 lili.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/39335511?s=460&v=4'), filename: "lili_face.jpg", content_type: "image/jpg")
 lili.save!
 jamie = User.new(
-  email: 'jamie@clubbers.org',
+  email: 'jamie@gmail.com',
   password: '123456',
   first_name: 'Jamie',
   last_name: 'Newton',
@@ -49,7 +49,7 @@ jamie = User.new(
 jamie.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/33573418?s=460&v=4'), filename: "jamie_face.jpg", content_type: "image/jpg")
 jamie.save!
 shirley = User.new(
-  email: 'shirley@discjockeys.org',
+  email: 'shirley@gmail.com',
   password: '123456',
   first_name: 'Shirley',
   last_name: 'Whirley',
@@ -59,7 +59,7 @@ shirley = User.new(
 shirley.avatar.attach(io: open('https://www.grammy.com/sites/com/files/styles/image_landscape_hero/public/muzooka/Taylor%2BSwift/Taylor%2520Swift_16_9_1578384864.jpg?itok=EHqXQIe6'), filename: "tay_face.jpg", content_type: "image/jpg")
 shirley.save!
 gurpriya = User.new(
-  email: 'gurpriya@clubbers.org',
+  email: 'gurpriya@gmail.com',
   password: '123456',
   first_name: 'Gurpriya',
   last_name: 'Bhatia',
@@ -206,8 +206,8 @@ fomo_friday = Event.new(
   theme: 'Pop',
   venue_id: pryzm.id,
   user_id: eric.id,
-  start_date_time: Time.new(2020, 03, 21, 15, 00, 00, "+02:00"),
-  end_date_time: Time.new(2020, 03, 21, 23, 00, 00, "+02:00"))
+  start_date_time: Time.new(2020, 03, 21, 15, 00, 00, "+00:00"),
+  end_date_time: Time.new(2020, 03, 21, 23, 00, 00, "+00:00"))
 fomo_friday.event_image.attach(io: open('https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'), filename: "fomo_friday_image.jpg", content_type: "image/jpg")
 fomo_friday.save!
 puts 'Events created!'
@@ -216,8 +216,8 @@ just_juice = Event.new(
   theme: 'Pop',
   venue_id: queen_of_hoxton.id,
   user_id: eric.id,
-  start_date_time: Time.new(2020, 03, 20, 20, 00, 00, "+02:00"),
-  end_date_time: Time.new(2020, 03, 20, 23, 00, 00, "+02:00"))
+  start_date_time: Time.new(2020, 03, 20, 20, 00, 00, "+00:00"),
+  end_date_time: Time.new(2020, 03, 20, 23, 00, 00, "+00:00"))
 just_juice.event_image.attach(io: open('https://images.unsplash.com/photo-1565034400361-c05ee5e2cbb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'), filename: "just_juice_image.jpg", content_type: "image/jpg")
 just_juice.save!
 pleasurehood = Event.new(
@@ -225,10 +225,19 @@ pleasurehood = Event.new(
   theme: 'Party',
   venue_id: xoyo.id,
   user_id: eric.id,
-  start_date_time: Time.new(2020, 03, 19, 21, 30, 00, "+02:00"),
-  end_date_time: Time.new(2020, 03, 19, 23, 00, 00, "+02:00"))
+  start_date_time: Time.new(2020, 03, 20, 21, 30, 00, "+00:00"),
+  end_date_time: Time.new(2020, 03, 19, 23, 00, 00, "+00:00"))
 pleasurehood.event_image.attach(io: open('https://hirespace.imgix.net/spaces/7043/ncuakz3tswo.jpg?h=1080&w=1920&auto=format&fit=crop&q=40'), filename: "pleasurehood_image.jpg", content_type: "image/jpg")
 pleasurehood.save!
+ravers = Event.new(
+  name: 'Ravers Inc.',
+  theme: 'Party',
+  venue_id: tiger_tiger.id,
+  user_id: eric.id,
+  start_date_time: Time.new(2020, 03, 19, 22, 00, 00, "+00:00"),
+  end_date_time: Time.new(2020, 03, 19, 23, 00, 00, "+00:00"))
+ravers.event_image.attach(io: open('https://images.unsplash.com/photo-1568738558403-f4e8c8f7a842?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'), filename: "pleasurehood_image.jpg", content_type: "image/jpg")
+ravers.save!
 puts 'Events created!'
 
 puts 'Creating event tracks...'
