@@ -206,8 +206,8 @@ fomo_friday = Event.new(
   theme: 'Pop',
   venue_id: pryzm.id,
   user_id: eric.id,
-  start_date_time: start_date_time,
-  end_date_time: end_date_time)
+  start_date_time: Time.new(2020, 03, 21, 15, 00, 00, "+02:00"),
+  end_date_time: Time.new(2020, 03, 21, 23, 00, 00, "+02:00"))
 fomo_friday.event_image.attach(io: open('https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'), filename: "fomo_friday_image.jpg", content_type: "image/jpg")
 fomo_friday.save!
 puts 'Events created!'
@@ -216,8 +216,8 @@ just_juice = Event.new(
   theme: 'Pop',
   venue_id: queen_of_hoxton.id,
   user_id: eric.id,
-  start_date_time: start_date_time,
-  end_date_time: end_date_time)
+  start_date_time: Time.new(2020, 03, 20, 20, 00, 00, "+02:00"),
+  end_date_time: Time.new(2020, 03, 20, 23, 00, 00, "+02:00"))
 just_juice.event_image.attach(io: open('https://images.unsplash.com/photo-1565034400361-c05ee5e2cbb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'), filename: "just_juice_image.jpg", content_type: "image/jpg")
 just_juice.save!
 pleasurehood = Event.new(
@@ -225,8 +225,8 @@ pleasurehood = Event.new(
   theme: 'Party',
   venue_id: xoyo.id,
   user_id: eric.id,
-  start_date_time: start_date_time,
-  end_date_time: end_date_time)
+  start_date_time: Time.new(2020, 03, 19, 21, 30, 00, "+02:00"),
+  end_date_time: Time.new(2020, 03, 19, 23, 00, 00, "+02:00"))
 pleasurehood.event_image.attach(io: open('https://hirespace.imgix.net/spaces/7043/ncuakz3tswo.jpg?h=1080&w=1920&auto=format&fit=crop&q=40'), filename: "pleasurehood_image.jpg", content_type: "image/jpg")
 pleasurehood.save!
 puts 'Events created!'

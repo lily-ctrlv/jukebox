@@ -3,6 +3,7 @@
   <%= link_to event_event_track_path(event_id: event.id, id: 1) do %>
     <% if event.end_date_time < Time.new %>
       <div class="card-category card-category-grey" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(event.event_image.key) %>);">
+        <h5><span class="badge badge-info">Event Finished</span><h5>
     <% else %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(event.event_image.key) %>);">
     <% end %>
