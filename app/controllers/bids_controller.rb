@@ -32,7 +32,7 @@ class BidsController < ApplicationController
     @event_track.total_bid_amount_cents += bid.amount_cents
     @event_track.save!
     @bid.event_track = @event_track
-    deduct_bid_from_balance(bid) && add_dj_commission(bid) if bid.save!
+    deduct_bid_from_balance(bid) if bid.save!
   end
 
   def create_track_bid(bid)
@@ -47,7 +47,7 @@ class BidsController < ApplicationController
       @new_event_track = EventTrack.create!(track_id: @track.id, event_id: current_user.event_id, total_bid_amount_cents: bid.amount_cents, rank: 10)
       bid.event_track_id = @new_event_track.id
     end
-    deduct_bid_from_balance(bid) && add_dj_commission(bid) if bid.save!
+    deduct_bid_from_balance(bid) if bid.save!
   end
 
   def check_for_track_in_playlist(track, event_tracks)
@@ -62,12 +62,6 @@ class BidsController < ApplicationController
 
   def deduct_bid_from_balance(bid)
     current_user.update!(balance_cents: current_user.balance_cents - bid.amount_cents)
-  end
-
-  def add_dj_commission(bid)
-    dj = bid.event_track.event.user
-    bid_commission = bid.amount_cents / 10
-    dj.update!(balance_cents: dj.balance_cents += bid_commission)
   end
 
   def update
