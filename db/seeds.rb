@@ -9,7 +9,7 @@ require 'open-uri'
 
 puts 'Creating users...'
 james = User.new(
-  email: 'james@jukebox.org',
+  email: 'james@clubbers.org',
   password: '123456',
   first_name: 'James',
   last_name: 'Trinder',
@@ -19,17 +19,17 @@ james = User.new(
 james.avatar.attach(io: open('https://avatars3.githubusercontent.com/u/39556334?s=460&v=4'), filename: "james_face.jpg", content_type: "image/jpg")
 james.save!
 eric = User.new(
-  email: 'eric@jukebox.org',
+  email: 'eric@discjockeys.org',
   password: '123456',
   first_name: 'Eric',
   last_name: 'Burger',
   display_name: 'jukebox_eric',
-  balance_cents: 800,
-  dj: false)
+  balance_cents: 0,
+  dj: true)
 eric.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/25728050?s=460&v=4'), filename: "eric_face.jpg", content_type: "image/jpg")
 eric.save!
 lili = User.new(
-  email: 'lili@jukebox.org',
+  email: 'lili@clubbers.org',
   password: '123456',
   first_name: 'Liliana',
   last_name: 'Martins Cosentino',
@@ -39,7 +39,7 @@ lili = User.new(
 lili.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/39335511?s=460&v=4'), filename: "lili_face.jpg", content_type: "image/jpg")
 lili.save!
 jamie = User.new(
-  email: 'jamie@jukebox.org',
+  email: 'jamie@clubbers.org',
   password: '123456',
   first_name: 'Jamie',
   last_name: 'Newton',
@@ -49,7 +49,7 @@ jamie = User.new(
 jamie.avatar.attach(io: open('https://avatars2.githubusercontent.com/u/33573418?s=460&v=4'), filename: "jamie_face.jpg", content_type: "image/jpg")
 jamie.save!
 shirley = User.new(
-  email: 'shirley@jukebox.org',
+  email: 'shirley@discjockeys.org',
   password: '123456',
   first_name: 'Shirley',
   last_name: 'Whirley',
@@ -58,7 +58,18 @@ shirley = User.new(
   dj: true)
 shirley.avatar.attach(io: open('https://www.grammy.com/sites/com/files/styles/image_landscape_hero/public/muzooka/Taylor%2BSwift/Taylor%2520Swift_16_9_1578384864.jpg?itok=EHqXQIe6'), filename: "tay_face.jpg", content_type: "image/jpg")
 shirley.save!
+gurpriya = User.new(
+  email: 'gurpriya@clubbers.org',
+  password: '123456',
+  first_name: 'Gurpriya',
+  last_name: 'Bhatia',
+  display_name: 'jukebox_gurpriya',
+  balance_cents: 800,
+  dj: false)
+gurpriya.avatar.attach(io: open('https://media-exp1.licdn.com/dms/image/C4D03AQFmgFtxngl_1A/profile-displayphoto-shrink_800_800/0?e=1590019200&v=beta&t=2zxgJHRcUt9abYQ9nGIpcowJYDWBIhyrTczM7yuC5_o'), filename: "gurpriya_face.jpg", content_type: "image/jpg")
+gurpriya.save!
 puts 'Users created!'
+
 
 puts 'Creating tracks...'
 juice = Track.new(
@@ -151,6 +162,18 @@ my_oh_my = Track.new(
   album: 'Romance')
 my_oh_my.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p07zg4zy.jpg'), filename: "my_oh_my_cover.jpg", content_type: "image/jpg")
 my_oh_my.save!
+crazy_in_love = Track.new(
+  title: 'Crazy in Love',
+  artist: 'Beyoncé (feat. Jay-Z)',
+  album: 'Dangerously in Love')
+crazy_in_love.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Beyonce_-_Crazy_in_Love_%28single%29.png/220px-Beyonce_-_Crazy_in_Love_%28single%29.png'), filename: "crazy_in_love_cover.jpg", content_type: "image/jpg")
+crazy_in_love.save!
+all_about_that_bass = Track.new(
+  title: 'All About that Bass',
+  artist: 'Meghan Trainor',
+  album: 'Title')
+all_about_that_bass.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Meghan_Trainor_-_All_About_That_Bass_%28Official_Single_Cover%29.png/220px-Meghan_Trainor_-_All_About_That_Bass_%28Official_Single_Cover%29.png'), filename: "crazy_in_love_cover.jpg", content_type: "image/jpg")
+all_about_that_bass.save!
 
 puts 'Tracks created!'
 
@@ -182,7 +205,7 @@ fomo_friday = Event.new(
   name: 'Fomo Friday',
   theme: 'Pop',
   venue_id: pryzm.id,
-  user_id: shirley.id,
+  user_id: eric.id,
   start_date_time: start_date_time,
   end_date_time: end_date_time)
 fomo_friday.event_image.attach(io: open('https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'), filename: "fomo_friday_image.jpg", content_type: "image/jpg")
@@ -192,11 +215,20 @@ just_juice = Event.new(
   name: 'Just Juice',
   theme: 'Pop',
   venue_id: queen_of_hoxton.id,
-  user_id: shirley.id,
+  user_id: eric.id,
   start_date_time: start_date_time,
   end_date_time: end_date_time)
 just_juice.event_image.attach(io: open('https://images.unsplash.com/photo-1565034400361-c05ee5e2cbb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'), filename: "just_juice_image.jpg", content_type: "image/jpg")
 just_juice.save!
+pleasurehood = Event.new(
+  name: 'Pleasurehood',
+  theme: 'Party',
+  venue_id: xoyo.id,
+  user_id: eric.id,
+  start_date_time: start_date_time,
+  end_date_time: end_date_time)
+pleasurehood.event_image.attach(io: open('https://hirespace.imgix.net/spaces/7043/ncuakz3tswo.jpg?h=1080&w=1920&auto=format&fit=crop&q=40'), filename: "pleasurehood_image.jpg", content_type: "image/jpg")
+pleasurehood.save!
 puts 'Events created!'
 
 puts 'Creating event tracks...'
@@ -225,49 +257,70 @@ lonely_event_track = EventTrack.create!(
   event_id: fomo_friday.id,
   total_bid_amount: 0,
   rank: 5)
+crazy_in_love_event_track = EventTrack.create!(
+  track_id: crazy_in_love.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 6)
+all_about_that_bass_event_track = EventTrack.create!(
+  track_id: all_about_that_bass.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 7)
 puts 'Created event tracks!'
 
 puts 'Creating bids...'
 Bid.create!(
-  amount_cents: 50,
+  amount_cents: 150,
   event_track_id: juice_event_track.id,
   user_id: james.id
   )
 Bid.create!(
-  amount_cents: 25,
+  amount_cents: 50,
   event_track_id: worship_event_track.id,
   user_id: jamie.id
   )
 Bid.create!(
-  amount_cents: 10,
+  amount_cents: 250,
   event_track_id: shake_it_off_event_track.id,
   user_id: james.id
   )
 Bid.create!(
-  amount_cents: 30,
+  amount_cents: 50,
   event_track_id: juice_event_track.id,
-  user_id: eric.id
+  user_id: gurpriya.id
   )
 Bid.create!(
-  amount_cents: 10,
+  amount_cents: 100,
   event_track_id: juice_event_track.id,
   user_id: lili.id
   )
 Bid.create!(
-  amount_cents: 40,
+  amount_cents: 200,
   event_track_id: shake_it_off_event_track.id,
   user_id: jamie.id
   )
 Bid.create!(
-  amount_cents: 40,
+  amount_cents: 100,
   event_track_id: say_so_event_track.id,
   user_id: lili.id
   )
 Bid.create!(
-  amount_cents: 30,
+  amount_cents: 50,
   event_track_id: lonely_event_track.id,
   user_id: james.id
   )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: crazy_in_love_event_track.id,
+  user_id: gurpriya.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: all_about_that_bass_event_track.id,
+  user_id: gurpriya.id
+  )
+
 puts 'Created bids!'
 
 puts 'Tallying total bids...'
@@ -290,4 +343,13 @@ say_so_event_track.update!(total_bid_amount: total_say_so_bids)
 lonely_bids = Bid.where(event_track_id: lonely_event_track.id)
 total_lonely_bids = lonely_bids.sum { |b| b.amount }
 lonely_event_track.update!(total_bid_amount: total_lonely_bids)
+
+crazy_in_love_bids = Bid.where(event_track_id: crazy_in_love_event_track.id)
+total_crazy_in_love_bids = crazy_in_love_bids.sum { |b| b.amount }
+crazy_in_love_event_track.update!(total_bid_amount: total_crazy_in_love_bids)
+
+all_about_that_bass_bids = Bid.where(event_track_id: all_about_that_bass_event_track.id)
+total_all_about_that_bass_bids = all_about_that_bass_bids.sum { |b| b.amount }
+all_about_that_bass_event_track.update!(total_bid_amount: total_all_about_that_bass_bids)
+
 puts 'Total bids tallied!'
