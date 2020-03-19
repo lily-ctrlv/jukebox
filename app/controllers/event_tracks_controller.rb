@@ -36,6 +36,7 @@ class EventTracksController < ApplicationController
     @event_track.done = true
     @event_track.date_time_played = Time.new
     @event_track.save
+    add_dj_commission(@event_track)
     redirect_to event_event_track_path(@event_track.event, @event_track)
   end
 
@@ -64,6 +65,12 @@ class EventTracksController < ApplicationController
   end
 
   private
+
+  def add_dj_commission(event_track)
+    dj = event_track.event.user
+    commission = event_track.total_bid_amount_cents / 10
+    dj.update!(balance_cents: dj.balance_cents += commission)
+  end
 
   def event_track_params
     params.require(:event_track).permit(:track_id)
