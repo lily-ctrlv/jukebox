@@ -62,7 +62,7 @@
         <% @recent_10_bids.each do |bid| %>
         <div class="row">
             <div class="song-card d-flex flex-row">
-              <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img" %>
+              <%= cl_image_tag Track.find(bid.event_track.track_id).cover_photo.key, class:"song-img align-self-center" %>
               <div class="song-details align-self-center">
                 <p class="song-title"><%= Track.find(bid.event_track.track_id).title %></p>
                 <p class="song-artist"><%= Track.find(bid.event_track.track_id).artist %></p>
