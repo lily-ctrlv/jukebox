@@ -1,6 +1,6 @@
 <% content_for :title, "Search" %>
 <%= render 'shared/navbar_bottom' %>
-<div class="container">
+<div class="container mb-2">
   <%= form_tag tracks_path, method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a track" %>
   <% end %>
