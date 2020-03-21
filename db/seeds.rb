@@ -72,18 +72,48 @@ puts 'Users created!'
 
 
 puts 'Creating tracks...'
-juice = Track.new(
-  title: 'Juice',
-  artist: 'Lizzo',
-  album: 'Cuz I Love You')
-juice.cover_photo.attach(io: open("https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Lizzo_-_Cuz_I_Love_You.png/220px-Lizzo_-_Cuz_I_Love_You.png"), filename: "juice_cover.jpg", content_type: "image/jpg")
-juice.save!
-shake_it_off = Track.new(
-  title: 'Shake It Off',
-  artist: 'Taylor Swift',
-  album: '1989')
-shake_it_off.cover_photo.attach(io: open('https://lastfm.freetls.fastly.net/i/u/770x0/eca8390917b83c2c59f69484247d55af.jpg'), filename: "shake_cover.jpg", content_type: "image/jpg")
-shake_it_off.save!
+despacito = Track.new(
+  title: 'Despacito',
+  artist: 'Luis Fonsi (feat. Daddy Yankee)',
+  album: 'Vida')
+despacito.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/c/c8/Luis_Fonsi_Feat._Daddy_Yankee_-_Despacito_%28Official_Single_Cover%29.png'), filename: "despacito_cover.jpg", content_type: "image/jpg")
+despacito.save!
+wannabe = Track.new(
+  title: 'Wannabe',
+  artist: 'Spice Girls',
+  album: 'Spice')
+wannabe.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/b/b1/Wannabe.jpg'), filename: "wannabe_cover.jpg", content_type: "image/jpg")
+wannabe.save!
+i_like_it = Track.new(
+  title: 'I Like It',
+  artist: 'Cardi B (ft. Bad Bunny & J Balvin)',
+  album: 'Invastion of Privacy')
+i_like_it.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Cardi_B%2C_Bad_Bunny_and_J_Balvin_-_I_Like_It_%28Single_Cover%29.png/220px-Cardi_B%2C_Bad_Bunny_and_J_Balvin_-_I_Like_It_%28Single_Cover%29.png'), filename: "i_like_it_cover.jpg", content_type: "image/jpg")
+i_like_it.save!
+happy = Track.new(
+  title: 'Happy',
+  artist: 'Pharrell Williams',
+  album: 'Girl')
+happy.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/2/23/Pharrell_Williams_-_Happy.jpg'), filename: "happy_cover.jpg", content_type: "image/jpg")
+happy.save!
+gangnam_style = Track.new(
+  title: 'Gangnam Style',
+  artist: 'Psy',
+  album: 'Psy 6 (Six Rules), Part 1')
+gangnam_style.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/a/ad/Gangnam_Style_Official_Cover.png'), filename: "gangnam_style_cover.jpg", content_type: "image/jpg")
+gangnam_style.save!
+surfin_usa = Track.new(
+  title: 'Surfin\' U.S.A.',
+  artist: 'The Beach Boys',
+  album: 'Surfin\' U.S.A.')
+surfin_usa.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/c/cd/Beach_boys_surfin%27_usa.PNG'), filename: "surfin_usa.jpg", content_type: "image/jpg")
+surfin_usa.save!
+my_oh_my = Track.new(
+  title: 'My Oh My',
+  artist: 'Camila Cabello (feat. DaBaby)',
+  album: 'Romance')
+my_oh_my.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p07zg4zy.jpg'), filename: "my_oh_my_cover.jpg", content_type: "image/jpg")
+my_oh_my.save!
 i_like_me_better = Track.new(
   title: 'I Like Me Better',
   artist: 'Lauv',
@@ -96,12 +126,6 @@ someone_you_loved = Track.new(
   album: 'Divinely Uninspired To A Hellish Extent')
 someone_you_loved.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Lewis_Capaldi_-_Divinely_Uninspired_to_a_Hellish_Extent.png/220px-Lewis_Capaldi_-_Divinely_Uninspired_to_a_Hellish_Extent.png'), filename: "someone_cover.jpg", content_type: "image/jpg")
 someone_you_loved.save!
-worship = Track.new(
-  title: 'Worship',
-  artist: 'Years & Years',
-  album: 'Communion')
-worship.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/7/7f/Years_%26_Years_-_Communion_%28cover%29.jpg'), filename: "worship_cover.jpg", content_type: "image/jpg")
-worship.save!
 lost_in_japan = Track.new(
   title: 'Lost In Japan',
   artist: 'Shawn Mendes',
@@ -132,12 +156,6 @@ high_hopes = Track.new(
   album: 'In A Perfect World (Deluxe)')
 high_hopes.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/4/42/Kodaline_-_In_A_Perfect_World.jpg'), filename: "high_hopes_cover.jpg", content_type: "image/jpg")
 high_hopes.save!
-i_like_it = Track.new(
-  title: 'I Like It',
-  artist: 'Cardi B (ft. Bad Bunny & J Balvin)',
-  album: 'Invastion of Privacy')
-i_like_it.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Cardi_B%2C_Bad_Bunny_and_J_Balvin_-_I_Like_It_%28Single_Cover%29.png/220px-Cardi_B%2C_Bad_Bunny_and_J_Balvin_-_I_Like_It_%28Single_Cover%29.png'), filename: "i_like_it_cover.jpg", content_type: "image/jpg")
-i_like_it.save!
 say_so = Track.new(
   title: 'Say So',
   artist: 'Doja Cat',
@@ -156,12 +174,6 @@ lonely = Track.new(
   album: 'Lonely (Basement Mix)')
 lonely.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p082lxwz.jpg'), filename: "lonely_cover.jpg", content_type: "image/jpg")
 lonely.save!
-my_oh_my = Track.new(
-  title: 'My Oh My',
-  artist: 'Camila Cabello (feat. DaBaby)',
-  album: 'Romance')
-my_oh_my.cover_photo.attach(io: open('https://ichef.bbci.co.uk/images/ic/896xn/p07zg4zy.jpg'), filename: "my_oh_my_cover.jpg", content_type: "image/jpg")
-my_oh_my.save!
 crazy_in_love = Track.new(
   title: 'Crazy in Love',
   artist: 'Beyoncé (feat. Jay-Z)',
@@ -174,6 +186,37 @@ all_about_that_bass = Track.new(
   album: 'Title')
 all_about_that_bass.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Meghan_Trainor_-_All_About_That_Bass_%28Official_Single_Cover%29.png/220px-Meghan_Trainor_-_All_About_That_Bass_%28Official_Single_Cover%29.png'), filename: "crazy_in_love_cover.jpg", content_type: "image/jpg")
 all_about_that_bass.save!
+call_me_maybe = Track.new(
+  title: 'Call Me Maybe',
+  artist: 'Carly Rae Jepsen',
+  album: 'Kiss')
+call_me_maybe.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Carly_Rae_Jepsen_-_Call_Me_Maybe.png/220px-Carly_Rae_Jepsen_-_Call_Me_Maybe.png'), filename: "call_me_maybe_cover.jpg", content_type: "image/jpg")
+call_me_maybe.save!
+i_gotta_feeling = Track.new(
+  title: 'I Gotta Feeling',
+  artist: 'The Black Eyed Peas',
+  album: 'The E.N.D.')
+i_gotta_feeling.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/f/f4/I_Gotta_Feeling.png'), filename: "i_gotta_feeling_cover.jpg", content_type: "image/jpg")
+i_gotta_feeling.save!
+juice = Track.new(
+  title: 'Juice',
+  artist: 'Lizzo',
+  album: 'Cuz I Love You')
+juice.cover_photo.attach(io: open("https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Lizzo_-_Cuz_I_Love_You.png/220px-Lizzo_-_Cuz_I_Love_You.png"), filename: "juice_cover.jpg", content_type: "image/jpg")
+juice.save!
+shake_it_off = Track.new(
+  title: 'Shake It Off',
+  artist: 'Taylor Swift',
+  album: '1989')
+shake_it_off.cover_photo.attach(io: open('https://lastfm.freetls.fastly.net/i/u/770x0/eca8390917b83c2c59f69484247d55af.jpg'), filename: "shake_cover.jpg", content_type: "image/jpg")
+shake_it_off.save!
+worship = Track.new(
+  title: 'Worship',
+  artist: 'Years & Years',
+  album: 'Communion')
+worship.cover_photo.attach(io: open('https://upload.wikimedia.org/wikipedia/en/7/7f/Years_%26_Years_-_Communion_%28cover%29.jpg'), filename: "worship_cover.jpg", content_type: "image/jpg")
+worship.save!
+
 
 puts 'Tracks created!'
 
@@ -238,6 +281,16 @@ ravers = Event.new(
   end_date_time: Time.new(2020, 03, 19, 23, 00, 00, "+00:00"))
 ravers.event_image.attach(io: open('https://images.unsplash.com/photo-1568738558403-f4e8c8f7a842?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'), filename: "pleasurehood_image.jpg", content_type: "image/jpg")
 ravers.save!
+return_to_heaven = Event.new(
+  name: 'Return 2 Heaven',
+  theme: 'Fairies',
+  venue_id: heaven.id,
+  user_id: eric.id,
+  start_date_time: Time.new(2020, 03, 19, 22, 00, 00, "+00:00"),
+  end_date_time: Time.new(2020, 03, 19, 23, 00, 00, "+00:00"))
+return_to_heaven.event_image.attach(io: open('https://cdn.londonandpartners.com/asset/f1c747264f5381e7e0ae2ce14655739d.jpg'), filename: "return_to_heaven_image.jpg", content_type: "image/jpg")
+return_to_heaven.save!
+
 puts 'Events created!'
 
 puts 'Creating event tracks...'
@@ -276,6 +329,16 @@ all_about_that_bass_event_track = EventTrack.create!(
   event_id: fomo_friday.id,
   total_bid_amount: 0,
   rank: 7)
+call_me_maybe_event_track = EventTrack.create!(
+  track_id: call_me_maybe.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 8)
+i_gotta_feeling_event_track = EventTrack.create!(
+  track_id: i_gotta_feeling.id,
+  event_id: fomo_friday.id,
+  total_bid_amount: 0,
+  rank: 9)
 puts 'Created event tracks!'
 
 puts 'Creating bids...'
@@ -307,10 +370,10 @@ Bid.create!(
 Bid.create!(
   amount_cents: 200,
   event_track_id: shake_it_off_event_track.id,
-  user_id: jamie.id
+  user_id: gurpriya.id
   )
 Bid.create!(
-  amount_cents: 100,
+  amount_cents: 150,
   event_track_id: say_so_event_track.id,
   user_id: lili.id
   )
@@ -327,6 +390,51 @@ Bid.create!(
 Bid.create!(
   amount_cents: 50,
   event_track_id: all_about_that_bass_event_track.id,
+  user_id: gurpriya.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: call_me_maybe_event_track.id,
+  user_id: gurpriya.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: call_me_maybe_event_track.id,
+  user_id: lili.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: call_me_maybe_event_track.id,
+  user_id: jamie.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: i_gotta_feeling_event_track.id,
+  user_id: gurpriya.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: i_gotta_feeling_event_track.id,
+  user_id: james.id
+  )
+Bid.create!(
+  amount_cents: 50,
+  event_track_id: say_so_event_track.id,
+  user_id: james.id
+  )
+Bid.create!(
+  amount_cents: 100,
+  event_track_id: shake_it_off_event_track.id,
+  user_id: lili.id
+  )
+Bid.create!(
+  amount_cents: 100,
+  event_track_id: say_so_event_track.id,
+  user_id: gurpriya.id
+  )
+Bid.create!(
+  amount_cents: 100,
+  event_track_id: say_so_event_track.id,
   user_id: gurpriya.id
   )
 
@@ -360,5 +468,13 @@ crazy_in_love_event_track.update!(total_bid_amount: total_crazy_in_love_bids)
 all_about_that_bass_bids = Bid.where(event_track_id: all_about_that_bass_event_track.id)
 total_all_about_that_bass_bids = all_about_that_bass_bids.sum { |b| b.amount }
 all_about_that_bass_event_track.update!(total_bid_amount: total_all_about_that_bass_bids)
+
+call_me_maybe_bids = Bid.where(event_track_id: call_me_maybe_event_track.id)
+total_call_me_maybe_bids = call_me_maybe_bids.sum { |b| b.amount }
+call_me_maybe_event_track.update!(total_bid_amount: total_call_me_maybe_bids)
+
+i_gotta_feeling_bids = Bid.where(event_track_id: i_gotta_feeling_event_track.id)
+total_i_gotta_feeling_bids = i_gotta_feeling_bids.sum { |b| b.amount }
+i_gotta_feeling_event_track.update!(total_bid_amount: total_i_gotta_feeling_bids)
 
 puts 'Total bids tallied!'
