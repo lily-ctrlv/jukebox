@@ -18,7 +18,7 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'active_storage_validations'
 gem 'json'
-gem 'oauth', '~> 0.5.1'
+gem 'oauth', '~> 0.5.5'
 
 gem 'money-rails'
 gem 'stripe'
